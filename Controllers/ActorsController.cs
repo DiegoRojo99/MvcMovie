@@ -42,6 +42,25 @@ namespace McvMovie.Controllers
                 return NotFound();
             }
 
+            
+            var stars= _context.Star.Where(s => s.ActorId == actor.Id);
+           
+            var movies = _context.Movie;
+            List<Movie> movieFromActor=new List<Movie>();
+
+            foreach(var star in stars)
+            {
+                foreach(var movie in movies)
+                { 
+                    if(movie.Id == star.MovieId){
+                        
+                        movieFromActor.Add(movie);
+                    }
+                }
+            }
+
+            actor.Movies=movieFromActor;
+
             return View(actor);
         }
 
