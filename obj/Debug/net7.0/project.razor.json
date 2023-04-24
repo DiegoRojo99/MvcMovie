@@ -18655,13 +18655,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Actors\\Details.cshtml",
+      "TargetPath": "Views\\Actors\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Actors\\Index.cshtml",
+      "TargetPath": "Views\\Actors\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Movies\\Details.cshtml",
       "TargetPath": "Views\\Movies\\Details.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Actors\\Edit.cshtml",
+      "TargetPath": "Views\\Actors\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18682,6 +18697,16 @@
     {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\HelloWorld\\Welcome.cshtml",
       "TargetPath": "Views\\HelloWorld\\Welcome.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Actors\\Delete.cshtml",
+      "TargetPath": "Views\\Actors\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Actors\\Create.cshtml",
+      "TargetPath": "Views\\Actors\\Create.cshtml",
       "FileKind": "mvc"
     },
     {

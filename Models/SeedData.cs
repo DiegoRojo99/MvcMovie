@@ -53,6 +53,18 @@ public static class SeedData
                     Rating ="R"
                 }
             );
+            //Look for actors
+            if (context.Actor.Any())
+            {
+                return;   // DB has been seeded
+            }
+            context.Actor.AddRange(
+                new Actor
+                {
+                    Name = "Bill Murray",
+                    Dob = DateTime.Parse("1950-9-21")
+                });
+                
             context.SaveChanges();
         }
     }
