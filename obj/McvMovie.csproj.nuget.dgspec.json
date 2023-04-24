@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\diego.rojo\\documents\\projects\\McvMovie\\McvMovie.csproj": {}
+    "C:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\McvMovie.csproj": {}
   },
   "projects": {
-    "C:\\Users\\diego.rojo\\documents\\projects\\McvMovie\\McvMovie.csproj": {
+    "C:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\McvMovie.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\diego.rojo\\documents\\projects\\McvMovie\\McvMovie.csproj",
+        "projectUniqueName": "C:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\McvMovie.csproj",
         "projectName": "McvMovie",
-        "projectPath": "C:\\Users\\diego.rojo\\documents\\projects\\McvMovie\\McvMovie.csproj",
+        "projectPath": "C:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\McvMovie.csproj",
         "packagesPath": "C:\\Users\\diego.rojo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\diego.rojo\\documents\\projects\\McvMovie\\obj\\",
+        "outputPath": "C:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\diego.rojo\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -37,6 +37,32 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SQLite": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.5, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[7.0.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
