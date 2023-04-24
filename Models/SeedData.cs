@@ -65,6 +65,19 @@ public static class SeedData
                     Dob = DateTime.Parse("1950-9-21")
                 });
                 
+            
+            //Look for actors
+            if (context.Star.Any())
+            {
+                return;   // DB has been seeded
+            }
+            context.Star.AddRange(
+                new Star
+                {
+                    MovieId = 2,
+                    ActorId = 1
+                });
+                
             context.SaveChanges();
         }
     }

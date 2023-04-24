@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace McvMovie.Migrations
 {
     /// <inheritdoc />
-    public partial class ActorAdded : Migration
+    public partial class StarAdded : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -40,6 +40,20 @@ namespace McvMovie.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Movie", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Star",
+                columns: table => new
+                {
+                    StarId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    MovieId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ActorId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Star", x => x.StarId);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,6 +91,9 @@ namespace McvMovie.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ActorMovie");
+
+            migrationBuilder.DropTable(
+                name: "Star");
 
             migrationBuilder.DropTable(
                 name: "Actor");

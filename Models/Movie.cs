@@ -6,9 +6,6 @@ namespace MvcMovie.Models;
 
 public class Movie
 {
-    public Movie(){
-        this.Actors = new HashSet<Actor>();
-    }
 
     public int Id { get; set; }
 
@@ -35,5 +32,5 @@ public class Movie
     [Required]
     public string? Rating { get; set; }
     
-    public virtual ICollection<Actor> Actors { get; set; }
+    public List<Actor>? Actors { get; set; }
 }

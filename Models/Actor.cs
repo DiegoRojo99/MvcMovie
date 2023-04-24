@@ -6,9 +6,6 @@ namespace MvcMovie.Models;
 
 public class Actor
 {
-    public Actor(){
-        this.Movies = new HashSet<Movie>();
-    }
     public int Id { get; set; }
 
     [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$")]
@@ -20,6 +17,6 @@ public class Actor
     [DataType(DataType.Date)]
     public DateTime Dob { get; set; }
 
-    public virtual ICollection<Movie> Movies { get; set; }
+    public List<Movie>? Movies { get; set; }
 
 }

@@ -11,8 +11,8 @@ using MvcMovie.Data;
 namespace McvMovie.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    [Migration("20230424124730_ActorAdded")]
-    partial class ActorAdded
+    [Migration("20230424141020_StarAdded")]
+    partial class StarAdded
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,6 +84,23 @@ namespace McvMovie.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Movie");
+                });
+
+            modelBuilder.Entity("MvcMovie.Models.Star", b =>
+                {
+                    b.Property<int>("StarId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ActorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("StarId");
+
+                    b.ToTable("Star");
                 });
 
             modelBuilder.Entity("ActorMovie", b =>

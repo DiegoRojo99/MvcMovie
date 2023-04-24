@@ -83,6 +83,23 @@ namespace McvMovie.Migrations
                     b.ToTable("Movie");
                 });
 
+            modelBuilder.Entity("MvcMovie.Models.Star", b =>
+                {
+                    b.Property<int>("StarId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("ActorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("MovieId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("StarId");
+
+                    b.ToTable("Star");
+                });
+
             modelBuilder.Entity("ActorMovie", b =>
                 {
                     b.HasOne("MvcMovie.Models.Actor", null)

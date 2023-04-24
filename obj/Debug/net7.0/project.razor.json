@@ -18650,6 +18650,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Stars\\Index.cshtml",
+      "TargetPath": "Views\\Stars\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Movies\\Delete.cshtml",
       "TargetPath": "Views\\Movies\\Delete.cshtml",
       "FileKind": "mvc"
@@ -18715,6 +18720,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Stars\\Create.cshtml",
+      "TargetPath": "Views\\Stars\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Movies\\Edit.cshtml",
       "TargetPath": "Views\\Movies\\Edit.cshtml",
       "FileKind": "mvc"
@@ -18725,8 +18735,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Stars\\Edit.cshtml",
+      "TargetPath": "Views\\Stars\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Stars\\Delete.cshtml",
+      "TargetPath": "Views\\Stars\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Stars\\Details.cshtml",
+      "TargetPath": "Views\\Stars\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
