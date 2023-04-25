@@ -24,3 +24,11 @@ body {
 .list-item{
   margin: 0;
 }
+
+a{
+  cursor: pointer;
+  text-decoration: none;
+}
+p select{
+  margin-right: 8px;
+}

@@ -20,13 +20,14 @@ namespace McvMovie.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index(string movieGenre,string searchString)
+        public async Task<IActionResult> Index(string movieGenre,string searchString, string movieRating, string moviePrice)
         {
             if(_context.Movie == null){
                 return Problem("Entity set 'MvcMovieContext.Movie' is null.");
             }
 
             IQueryable<string> genreQuery = from m in _context.Movie orderby m.Genre select m.Genre;
+            IQueryable<string> ratingQuery = from m in _context.Movie orderby m.Rating select m.Rating;
             var movies = from m in _context.Movie select m;
 
             if(!String.IsNullOrEmpty(searchString)){
@@ -35,8 +36,15 @@ namespace McvMovie.Controllers
             if(!String.IsNullOrEmpty(movieGenre)){
                 movies = movies.Where(x => x.Genre == movieGenre);
             }
+            if(!String.IsNullOrEmpty(movieRating)){
+                movies = movies.Where(x => x.Rating == movieRating);
+            }
+            if(!String.IsNullOrEmpty(moviePrice)){
+                movies = movies.Where(x => x.Rating == moviePrice);
+            }
             var movieGenreVM = new MovieGenreViewModel{
                 Genres = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                Ratings = new SelectList(await ratingQuery.Distinct().ToListAsync()),
                 Movies = await movies.ToListAsync()
             };
             

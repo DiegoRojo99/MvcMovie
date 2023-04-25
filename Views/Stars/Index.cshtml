@@ -31,9 +31,9 @@
                 @Html.DisplayFor(modelItem => item.ActorId)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.StarId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.StarId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.StarId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.StarId"><i class="fa-solid fa-pen-to-square fa-xl"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.StarId"><i class="fa-solid fa-circle-info fa-xl"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.StarId"><i class="fa-solid fa-trash fa-xl"></i></a>
             </td>
         </tr>
 }

@@ -4,11 +4,9 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>@Model.Title</h1>
 
 <div>
-    <h4>Movie</h4>
-    <hr />
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Title)
@@ -46,7 +44,8 @@
         <dd class = "col-sm-10">
             @if(@Model.Actors != null){
                 @foreach(var item in @Model.Actors){
-                    <p class="list-item">@item.Name</p>
+                    <a href="http://localhost:5073/Actors/Details/@item.Id" class="list-item">@item.Name</a>
+                    <br />
                 }
             }
         </dd>

@@ -42,6 +42,9 @@ namespace McvMovie.Controllers
                 return NotFound();
             }
 
+            var movies = _context.Movie;
+            var actors = _context.Actor;
+
             return View(star);
         }
 
