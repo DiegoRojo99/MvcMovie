@@ -51,6 +51,8 @@ namespace McvMovie.Controllers
         // GET: Stars/Create
         public IActionResult Create()
         {
+            ViewData["movies"]=_context.Movie;
+            ViewData["actors"]=_context.Actor;
             return View();
         }
 
