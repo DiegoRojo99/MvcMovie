@@ -32,5 +32,5 @@ public class Movie
     [Required]
     public string? Rating { get; set; }
     
-    public List<Actor>? Actors { get; set; }
+    public List<Star>? Actors { get; set; }
 }

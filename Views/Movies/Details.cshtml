@@ -44,8 +44,10 @@
         <dd class = "col-sm-10">
             @if(@Model.Actors != null){
                 @foreach(var item in @Model.Actors){
-                    <a href="http://localhost:5073/Actors/Details/@item.Id" class="list-item">@item.Name</a>
-                    <br />
+                    @if(@item.Actor!=null){
+                        <a href="http://localhost:5073/Actors/Details/@item.Actor.Id" class="list-item">@item.Actor.Name</a>
+                        <br />
+                    }
                 }
             }
         </dd>

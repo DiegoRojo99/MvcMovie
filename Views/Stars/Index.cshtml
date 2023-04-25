@@ -13,10 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MovieId)
+                @Html.DisplayNameFor(model => model.Movie.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ActorId)
+                @Html.DisplayNameFor(model => model.Actor.Id)
             </th>
             <th></th>
         </tr>
@@ -25,10 +25,17 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.MovieId)
+                @if(item!=null){
+                   @if(item.Movie!=null){
+                        @Html.DisplayFor(modelItem => item.Movie.Id)
+                    }
+                }
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ActorId)
+            <td>@if(item!=null){
+                   @if(item.Actor!=null){
+                        @Html.DisplayFor(modelItem => item.Actor.Id)
+                    }
+                }
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.StarId"><i class="fa-solid fa-pen-to-square fa-xl"></i></a> |

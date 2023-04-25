@@ -43,16 +43,17 @@ namespace McvMovie.Controllers
             }
 
             
-            var stars= _context.Star.Where(s => s.ActorId == actor.Id);
+            var stars= _context.Star.Where(s => s.Actor == actor);
            
             var movies = _context.Movie;
+            /*
             List<Movie> movieFromActor=new List<Movie>();
 
             foreach(var star in stars)
             {
                 foreach(var movie in movies)
                 { 
-                    if(movie.Id == star.MovieId){
+                    if(movie == star.Movie){
                         
                         movieFromActor.Add(movie);
                     }
@@ -60,6 +61,7 @@ namespace McvMovie.Controllers
             }
 
             actor.Movies=movieFromActor;
+            */
 
             return View(actor);
         }
