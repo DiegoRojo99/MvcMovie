@@ -32,3 +32,40 @@ a{
 p select{
   margin-right: 8px;
 }
+#nav-ul{
+  margin-right: 16px;
+}
+#nav-logo{
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 32px;
+  cursor: default;
+}
+.container h1{
+  text-align: center;
+}
+
+.nav-item{
+  font-size: 24px;
+  margin: 0 4px;
+}
+
+nav, footer{
+  background: rgb(115,247,130);
+  background: linear-gradient(90deg, rgba(115,247,130,1) 0%, rgba(17,199,105,1) 63%, rgba(2,179,55,1) 100%);
+  background-repeat: no-repeat;
+}
+nav{
+  height: 64px;
+  width: 100%;
+}
+footer{
+  position: absolute;
+  bottom: 0;
+  height: 64px;
+  width: 100%;
+}
+.body{
+  background: rgb(53,148,107);
+  background: linear-gradient(214deg, rgba(53,148,107,1) 0%, rgba(65,200,133,1) 100%);
+}
