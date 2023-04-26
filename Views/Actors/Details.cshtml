@@ -21,12 +21,12 @@
             @Html.DisplayFor(model => model.Dob)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Movies)
+            @Html.DisplayNameFor(model => model.Stars)
         </dt>
         <dd class = "col-sm-10">
-            @if(@Model.Movies != null){
-                @foreach(var item in @Model.Movies){
-                    <a href="http://localhost:5073/Movies/Details/@item.Movie.Id" class="list-item">@item.Movie.Title</a>
+            @if(@Model.Stars != null){
+                @foreach(var item in @Model.Stars){
+                    <a href="http://localhost:5073/Movies/Details/@item.MovieId" class="list-item">@item.Movie.Title</a>
                     <br />
                 }
             }

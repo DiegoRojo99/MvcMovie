@@ -36,14 +36,20 @@ namespace McvMovie.Controllers
             }
 
             var star = await _context.Star
-                .FirstOrDefaultAsync(m => m.StarId == id);
+                .FirstOrDefaultAsync(s => s.StarId == id);
             if (star == null)
             {
                 return NotFound();
             }
 
-            var movies = _context.Movie;
-            var actors = _context.Actor;
+            var movie = await _context.Movie.FirstOrDefaultAsync(m => m.Id == star.MovieId);
+            var actor = await _context.Actor.FirstOrDefaultAsync(a => a.Id == star.ActorId);
+            if(movie != null && actor != null){
+                var actorName = actor.Name;
+                var movieName = movie.Title;
+                ViewData["movieName"]=movieName;
+                ViewData["actorName"]=actorName;
+            }
 
             return View(star);
         }
@@ -132,7 +138,7 @@ namespace McvMovie.Controllers
             }
 
             var star = await _context.Star
-                .FirstOrDefaultAsync(m => m.StarId == id);
+                .FirstOrDefaultAsync(s => s.StarId == id);
             if (star == null)
             {
                 return NotFound();

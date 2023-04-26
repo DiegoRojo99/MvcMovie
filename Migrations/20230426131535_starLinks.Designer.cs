@@ -11,8 +11,8 @@ using MvcMovie.Data;
 namespace McvMovie.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    [Migration("20230425155042_actorsInMovie")]
-    partial class actorsInMovie
+    [Migration("20230426131535_starLinks")]
+    partial class starLinks
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -95,11 +95,11 @@ namespace McvMovie.Migrations
             modelBuilder.Entity("MvcMovie.Models.Star", b =>
                 {
                     b.HasOne("MvcMovie.Models.Actor", "Actor")
-                        .WithMany("Movies")
+                        .WithMany("Stars")
                         .HasForeignKey("ActorId");
 
                     b.HasOne("MvcMovie.Models.Movie", "Movie")
-                        .WithMany("Actors")
+                        .WithMany("Stars")
                         .HasForeignKey("MovieId");
 
                     b.Navigation("Actor");
@@ -109,12 +109,12 @@ namespace McvMovie.Migrations
 
             modelBuilder.Entity("MvcMovie.Models.Actor", b =>
                 {
-                    b.Navigation("Movies");
+                    b.Navigation("Stars");
                 });
 
             modelBuilder.Entity("MvcMovie.Models.Movie", b =>
                 {
-                    b.Navigation("Actors");
+                    b.Navigation("Stars");
                 });
 #pragma warning restore 612, 618
         }
