@@ -13,10 +13,10 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.MovieId)
+                @Html.DisplayNameFor(model => model.Movie.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ActorId)
+                @Html.DisplayNameFor(model => model.Actor.Name)
             </th>
             <th></th>
         </tr>
@@ -26,11 +26,11 @@
         <tr>
             <td>
                 @if(item!=null){
-                    @Html.DisplayFor(modelItem => item.MovieId)
+                    @Html.DisplayFor(modelItem => item.Movie.Title)
                 }
             </td>
             <td>@if(item!=null){
-                    @Html.DisplayFor(modelItem => item.ActorId)
+                    @Html.DisplayFor(modelItem => item.Actor.Name)
                 }
             </td>
             <td>

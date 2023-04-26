@@ -22,8 +22,32 @@ namespace McvMovie.Controllers
         // GET: Stars
         public async Task<IActionResult> Index()
         {
+
+            var stars = await _context.Star.ToListAsync();
+            var actors = _context.Actor;
+            var movies = _context.Movie;
+
+            foreach (var movie in _context.Movie)
+            {
+                foreach (var star in stars)
+                {
+                    if(movie.Id.Equals(star.MovieId)){
+                        star.Movie=movie;
+                    }
+                }
+            }
+            foreach (var actor in _context.Actor)
+            {
+                foreach (var star in stars)
+                {
+                    if(actor.Id.Equals(star.ActorId)){
+                        star.Actor=actor;
+                    }
+                }
+            }          
+
               return _context.Star != null ? 
-                          View(await _context.Star.ToListAsync()) :
+                          View(stars) :
                           Problem("Entity set 'MvcMovieContext.Star'  is null.");
         }
 
@@ -71,6 +95,7 @@ namespace McvMovie.Controllers
         {
             if (ModelState.IsValid)
             {
+                Console.WriteLine("ACtor ID:"+star.ActorId);
                 _context.Add(star);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
