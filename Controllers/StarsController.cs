@@ -111,6 +111,9 @@ namespace McvMovie.Controllers
                 return NotFound();
             }
 
+            ViewData["movies"]=_context.Movie;
+            ViewData["actors"]=_context.Actor;
+            
             var star = await _context.Star.FindAsync(id);
             if (star == null)
             {
@@ -167,6 +170,14 @@ namespace McvMovie.Controllers
             if (star == null)
             {
                 return NotFound();
+            }
+
+            
+            var movie = await _context.Movie.FirstOrDefaultAsync(m => m.Id == star.MovieId);
+            var actor = await _context.Actor.FirstOrDefaultAsync(a => a.Id == star.ActorId);
+            if(movie != null && actor != null){
+                star.Movie=movie;
+                star.Actor=actor;
             }
 
             return View(star);
