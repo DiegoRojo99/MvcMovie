@@ -36,32 +36,26 @@ namespace McvMovie.Controllers
             }
 
             var actor = await _context.Actor
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(a => a.Id == id);
             if (actor == null)
             {
                 return NotFound();
             }
 
             
-            var stars= _context.Star.Where(s => s.Actor == actor);
-           
+            var stars= _context.Star.Where(s => s.ActorId == actor.Id);
             var movies = _context.Movie;
-            /*
-            List<Movie> movieFromActor=new List<Movie>();
+            
 
             foreach(var star in stars)
             {
                 foreach(var movie in movies)
                 { 
-                    if(movie == star.Movie){
-                        
-                        movieFromActor.Add(movie);
+                    if(movie.Id.Equals(star.MovieId)){  
+                        actor.Stars.Add(star);
                     }
                 }
-            }
-
-            actor.Movies=movieFromActor;
-            */
+            }            
 
             return View(actor);
         }
