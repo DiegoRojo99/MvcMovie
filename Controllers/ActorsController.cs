@@ -41,12 +41,9 @@ namespace McvMovie.Controllers
             {
                 return NotFound();
             }
-
             
             var stars= _context.Star.Where(s => s.ActorId == actor.Id);
             var movies = _context.Movie;
-            
-
             foreach(var star in stars)
             {
                 foreach(var movie in movies)
@@ -63,6 +60,9 @@ namespace McvMovie.Controllers
         // GET: Actors/Create
         public IActionResult Create()
         {
+            ViewData["movies"] = _context.Movie;
+            ViewData["stars"] = _context.Star;
+            ViewBag.Stars = new MultiSelectList(_context.Movie, "Id", "Title");
             return View();
         }
 
@@ -71,11 +71,22 @@ namespace McvMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Dob")] Actor actor)
+        public async Task<IActionResult> Create([Bind("Id,Name,Dob")] Actor actor, List<int> Stars)
         {
             if (ModelState.IsValid)
-            {
+            {   
+                int nextActorId=(_context.Movie.Count());
+                actor.Id=nextActorId;
                 _context.Add(actor);
+                if(Stars!=null){
+                    foreach (var item in Stars)
+                    {
+                        Star s = new Star();
+                        s.MovieId=item;
+                        s.ActorId=nextActorId;
+                        _context.Add(s);
+                    }
+                }
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
