@@ -106,6 +106,19 @@ namespace McvMovie.Controllers
             {
                 return NotFound();
             }
+
+            var allStars=_context.Star.Where(s=> s.ActorId.Equals(id));
+            List<Guid> movieIDs = new List<Guid>();
+
+            foreach (var star in allStars)
+            {
+                if(star.MovieId!=null){
+                    movieIDs.Add((Guid)star.MovieId);
+                }
+            }
+
+            ViewBag.Stars = new MultiSelectList(_context.Movie, "Id", "Title",movieIDs);
+
             return View(actor);
         }
 
@@ -114,7 +127,7 @@ namespace McvMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Name,Dob")] Actor actor)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Name,Dob")] Actor actor, List<Guid> Stars)
         {
             if (id != actor.Id)
             {
@@ -126,6 +139,17 @@ namespace McvMovie.Controllers
                 try
                 {
                     _context.Update(actor);
+                    if(Stars!=null){
+                    foreach (var item in Stars)
+                        {
+                            Star s = new Star();
+                            s.MovieId=item;
+                            s.ActorId=id;
+                            Console.WriteLine("Actor Id: "+s.ActorId);
+                            Console.WriteLine("Movie Id: "+s.MovieId);
+                            _context.Add(s);
+                        }
+                    }
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
