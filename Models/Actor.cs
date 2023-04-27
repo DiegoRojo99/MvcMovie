@@ -6,7 +6,7 @@ namespace MvcMovie.Models;
 
 public class Actor
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; } = Guid.Empty;
 
     [RegularExpression(@"^[A-Z]+[a-zA-Z\s-]*$")]
     [StringLength(60, MinimumLength = 3)]

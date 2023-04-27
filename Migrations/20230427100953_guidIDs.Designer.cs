@@ -11,8 +11,8 @@ using MvcMovie.Data;
 namespace McvMovie.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    [Migration("20230426131535_starLinks")]
-    partial class starLinks
+    [Migration("20230427100953_guidIDs")]
+    partial class guidIDs
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,9 +22,9 @@ namespace McvMovie.Migrations
 
             modelBuilder.Entity("MvcMovie.Models.Actor", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.Property<DateTime>("Dob")
                         .HasColumnType("TEXT");
@@ -41,9 +41,9 @@ namespace McvMovie.Migrations
 
             modelBuilder.Entity("MvcMovie.Models.Movie", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Genre")
                         .IsRequired()
@@ -77,11 +77,11 @@ namespace McvMovie.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("ActorId")
-                        .HasColumnType("INTEGER");
+                    b.Property<Guid?>("ActorId")
+                        .HasColumnType("TEXT");
 
-                    b.Property<int?>("MovieId")
-                        .HasColumnType("INTEGER");
+                    b.Property<Guid?>("MovieId")
+                        .HasColumnType("TEXT");
 
                     b.HasKey("StarId");
 

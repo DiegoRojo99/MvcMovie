@@ -7,7 +7,7 @@ namespace MvcMovie.Models;
 public class Movie
 {
 
-    public int Id { get; set; }
+    public Guid Id { get; set; } = Guid.Empty;
 
     [StringLength(60, MinimumLength = 3)]
     [Required]

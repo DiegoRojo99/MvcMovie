@@ -52,7 +52,7 @@ namespace McvMovie.Controllers
         }
 
         // GET: Movies/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null || _context.Movie == null)
             {
@@ -60,33 +60,23 @@ namespace McvMovie.Controllers
             }
 
             var movie = await _context.Movie
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id.Equals(id));
             if (movie == null)
             {
                 return NotFound();
             }
 
-            var stars= _context.Star.Where(s => s.Movie == movie);
-           
+            var stars= _context.Star.Where(s => s.MovieId == movie.Id);
             var actors = _context.Actor;
-            /*
-            List<Actor> actorsInMovie=new List<Actor>();
-
-            
             foreach(var star in stars)
             {
                 foreach(var actor in actors)
                 { 
-                    if(actor.Id == star.ActorId){
-                        
-                        actorsInMovie.Add(actor);
+                    if(actor.Id.Equals(star.ActorId)){  
+                        movie.Stars.Add(star);
                     }
                 }
-            }
-           
-
-            movie.Actors=stars;
- */
+            } 
             return View(movie);
         }
 
@@ -113,7 +103,7 @@ namespace McvMovie.Controllers
         }
 
         // GET: Movies/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null || _context.Movie == null)
             {
@@ -133,9 +123,9 @@ namespace McvMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
         {
-            if (id != movie.Id)
+            if (!id.Equals(movie.Id))
             {
                 return NotFound();
             }
@@ -164,7 +154,7 @@ namespace McvMovie.Controllers
         }
 
         // GET: Movies/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null || _context.Movie == null)
             {
@@ -172,7 +162,7 @@ namespace McvMovie.Controllers
             }
 
             var movie = await _context.Movie
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id.Equals(id));
             if (movie == null)
             {
                 return NotFound();
@@ -200,9 +190,9 @@ namespace McvMovie.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MovieExists(int id)
+        private bool MovieExists(Guid id)
         {
-          return (_context.Movie?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Movie?.Any(e => e.Id.Equals(id))).GetValueOrDefault();
         }
     }
 }

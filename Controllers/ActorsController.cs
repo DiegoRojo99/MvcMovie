@@ -28,7 +28,7 @@ namespace McvMovie.Controllers
         }
 
         // GET: Actors/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null || _context.Actor == null)
             {
@@ -36,7 +36,7 @@ namespace McvMovie.Controllers
             }
 
             var actor = await _context.Actor
-                .FirstOrDefaultAsync(a => a.Id == id);
+                .FirstOrDefaultAsync(a => a.Id.Equals(id));
             if (actor == null)
             {
                 return NotFound();
@@ -71,19 +71,19 @@ namespace McvMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Dob")] Actor actor, List<int> Stars)
+        public async Task<IActionResult> Create([Bind("Id,Name,Dob")] Actor actor, List<Guid> Stars)
         {
             if (ModelState.IsValid)
             {   
-                int nextActorId=(_context.Movie.Count());
-                actor.Id=nextActorId;
+                Guid g = Guid.NewGuid();
+                actor.Id=g;
                 _context.Add(actor);
                 if(Stars!=null){
                     foreach (var item in Stars)
                     {
                         Star s = new Star();
                         s.MovieId=item;
-                        s.ActorId=nextActorId;
+                        s.ActorId=g;
                         _context.Add(s);
                     }
                 }
@@ -94,7 +94,7 @@ namespace McvMovie.Controllers
         }
 
         // GET: Actors/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null || _context.Actor == null)
             {
@@ -114,7 +114,7 @@ namespace McvMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Dob")] Actor actor)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Name,Dob")] Actor actor)
         {
             if (id != actor.Id)
             {
@@ -145,7 +145,7 @@ namespace McvMovie.Controllers
         }
 
         // GET: Actors/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null || _context.Actor == null)
             {
@@ -153,7 +153,7 @@ namespace McvMovie.Controllers
             }
 
             var actor = await _context.Actor
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.Id.Equals(id));
             if (actor == null)
             {
                 return NotFound();
@@ -181,9 +181,9 @@ namespace McvMovie.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool ActorExists(int id)
+        private bool ActorExists(Guid id)
         {
-          return (_context.Actor?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Actor?.Any(e => e.Id.Equals(id))).GetValueOrDefault();
         }
     }
 }
