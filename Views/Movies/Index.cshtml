@@ -19,6 +19,11 @@
         <select asp-for="MovieRating" asp-items="Model.Ratings">
             <option value="">All Ratings</option>
         </select>
+        
+        <select asp-for="MovieStream" asp-items="Model.Streamings">
+            <option value="">All Streaming Services</option>
+        </select>
+
 
         Title:  <input type="text" asp-for="SearchString" />
         <input type="submit" value="Filter" />

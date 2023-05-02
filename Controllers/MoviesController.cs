@@ -20,7 +20,7 @@ namespace McvMovie.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index(string movieGenre,string searchString, string movieRating)
+        public async Task<IActionResult> Index(string movieGenre, string movieRating, string movieStream ,string searchString)
         {
             if(_context.Movie == null){
                 return Problem("Entity set 'MvcMovieContext.Movie' is null.");
@@ -29,6 +29,7 @@ namespace McvMovie.Controllers
             IQueryable<Guid?> genreQuery = from m in _context.Movie orderby m.GenreId select m.GenreId;
             IQueryable<Guid?> ratingQuery = from m in _context.Movie orderby m.RatingId select m.RatingId;
             var movies = from m in _context.Movie select m;
+            var streams = from ms in _context.MovieStreaming select ms;
 
             if(!String.IsNullOrEmpty(searchString)){
                 movies = movies.Where(s => s.Title!.Contains(searchString));
@@ -39,8 +40,18 @@ namespace McvMovie.Controllers
             if(!String.IsNullOrEmpty(movieRating)){
                 movies = movies.Where(m => m.RatingId.Equals(Guid.Parse(movieRating)));
             }
+            if(!String.IsNullOrEmpty(movieStream)){
+                streams = streams.Where(ms=> ms.StreamingServiceId.Equals(Guid.Parse(movieStream)));
+                List<Guid?> movieIDs=new List<Guid?>();
+                foreach (var item in streams)
+                {
+                    movieIDs.Add(item.MovieId);
+                }
+                movies = movies.Where(m => movieIDs.Contains(m.Id));
+            }
             var movieGenreVM = new MovieGenreViewModel{
                 Genres = new SelectList(_context.Genre,"Id","Name"),
+                Streamings = new SelectList(_context.StreamingService,"Id","Name"),
                 Ratings = new SelectList(_context.Rating,"Id","Name"),
                 Movies = await movies.ToListAsync()
             };
