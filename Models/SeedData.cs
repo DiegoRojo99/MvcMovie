@@ -79,6 +79,38 @@ public static class SeedData
                     ActorId = Guid.Parse("18375BA7-288E-4F74-9D5E-5C57559650E3"),
                     MovieId = Guid.Parse("664DEA07-3035-4199-8118-7F646FE38BB6")
                 });
+            if (context.StreamingService.Any())
+            {
+                return;   // DB has been seeded
+            }
+            context.StreamingService.AddRange(
+                new StreamingService
+                {
+                    Id = Guid.Parse("9C52557C-E17C-4AC0-97F3-267A79B4D718"),
+                    Name = "Disney+"
+                },new StreamingService
+                {
+                    Id = Guid.Parse("8993AA19-7FB2-42BB-9C82-623B4E2AF0E6"),
+                    Name = "Netflix"
+                },new StreamingService
+                {
+                    Id = Guid.Parse("327C477B-B4C7-4D58-9DE9-BC5FD8CCC88B"),
+                    Name = "Amazon Prime"
+                });
+            if (context.MovieStreaming.Any())
+            {
+                return;   // DB has been seeded
+            }
+            context.MovieStreaming.AddRange(
+                new MovieStreaming
+                {
+                    StreamingServiceId = Guid.Parse("9C52557C-E17C-4AC0-97F3-267A79B4D718"),
+                    MovieId = Guid.Parse("1A65BD8E-F74D-444F-85ED-875292332AE5")
+                },new MovieStreaming
+                {
+                    StreamingServiceId = Guid.Parse("8993AA19-7FB2-42BB-9C82-623B4E2AF0E6"),
+                    MovieId = Guid.Parse("664DEA07-3035-4199-8118-7F646FE38BB6")
+                });
             if (context.Genre.Any())
             {
                 return;   // DB has been seeded

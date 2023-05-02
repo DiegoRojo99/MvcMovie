@@ -85,6 +85,30 @@ namespace McvMovie.Migrations
                     b.ToTable("Movie");
                 });
 
+            modelBuilder.Entity("MvcMovie.Models.MovieStreaming", b =>
+                {
+                    b.Property<int>("MovieStreamingId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CountryCode")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("MovieId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<Guid?>("StreamingServiceId")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("MovieStreamingId");
+
+                    b.HasIndex("MovieId");
+
+                    b.HasIndex("StreamingServiceId");
+
+                    b.ToTable("MovieStreaming");
+                });
+
             modelBuilder.Entity("MvcMovie.Models.Rating", b =>
                 {
                     b.Property<Guid>("Id")
@@ -126,6 +150,25 @@ namespace McvMovie.Migrations
                     b.ToTable("Star");
                 });
 
+            modelBuilder.Entity("MvcMovie.Models.StreamingService", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LogoImage")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("StreamingService");
+                });
+
             modelBuilder.Entity("MvcMovie.Models.Movie", b =>
                 {
                     b.HasOne("MvcMovie.Models.Genre", "Genre")
@@ -139,6 +182,21 @@ namespace McvMovie.Migrations
                     b.Navigation("Genre");
 
                     b.Navigation("Rating");
+                });
+
+            modelBuilder.Entity("MvcMovie.Models.MovieStreaming", b =>
+                {
+                    b.HasOne("MvcMovie.Models.Movie", "Movie")
+                        .WithMany("Streams")
+                        .HasForeignKey("MovieId");
+
+                    b.HasOne("MvcMovie.Models.StreamingService", "StreamingService")
+                        .WithMany("Movies")
+                        .HasForeignKey("StreamingServiceId");
+
+                    b.Navigation("Movie");
+
+                    b.Navigation("StreamingService");
                 });
 
             modelBuilder.Entity("MvcMovie.Models.Star", b =>
@@ -169,9 +227,16 @@ namespace McvMovie.Migrations
             modelBuilder.Entity("MvcMovie.Models.Movie", b =>
                 {
                     b.Navigation("Stars");
+
+                    b.Navigation("Streams");
                 });
 
             modelBuilder.Entity("MvcMovie.Models.Rating", b =>
+                {
+                    b.Navigation("Movies");
+                });
+
+            modelBuilder.Entity("MvcMovie.Models.StreamingService", b =>
                 {
                     b.Navigation("Movies");
                 });

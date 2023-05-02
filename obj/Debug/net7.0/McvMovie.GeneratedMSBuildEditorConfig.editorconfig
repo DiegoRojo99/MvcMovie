@@ -72,6 +72,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/diego.rojo/Documents/projects/MvcMovie/Views/MovieStreaming/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVTdHJlYW1pbmdcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diego.rojo/Documents/projects/MvcMovie/Views/MovieStreaming/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVTdHJlYW1pbmdcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diego.rojo/Documents/projects/MvcMovie/Views/MovieStreaming/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVTdHJlYW1pbmdcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diego.rojo/Documents/projects/MvcMovie/Views/MovieStreaming/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVTdHJlYW1pbmdcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diego.rojo/Documents/projects/MvcMovie/Views/MovieStreaming/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVTdHJlYW1pbmdcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/diego.rojo/Documents/projects/MvcMovie/Views/Movies/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTW92aWVzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -118,6 +138,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/diego.rojo/Documents/projects/MvcMovie/Views/Stars/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RhcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diego.rojo/Documents/projects/MvcMovie/Views/StreamingServices/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RyZWFtaW5nU2VydmljZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diego.rojo/Documents/projects/MvcMovie/Views/StreamingServices/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RyZWFtaW5nU2VydmljZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diego.rojo/Documents/projects/MvcMovie/Views/StreamingServices/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RyZWFtaW5nU2VydmljZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diego.rojo/Documents/projects/MvcMovie/Views/StreamingServices/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RyZWFtaW5nU2VydmljZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/diego.rojo/Documents/projects/MvcMovie/Views/StreamingServices/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3RyZWFtaW5nU2VydmljZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/diego.rojo/Documents/projects/MvcMovie/Views/_ViewImports.cshtml]

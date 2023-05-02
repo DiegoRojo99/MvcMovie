@@ -21,6 +21,7 @@ public class Movie
     public Guid? RatingId { get; set; }
     
     public ICollection<Star>? Stars { get; set; }
+    public ICollection<MovieStreaming>? Streams { get; set; }
     public Guid? GenreId { get; set; }
     public Genre? Genre { get; set; }
 }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace McvMovie.Migrations
 {
     /// <inheritdoc />
-    public partial class noPrice : Migration
+    public partial class streaming : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -51,6 +51,19 @@ namespace McvMovie.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "StreamingService",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
+                    LogoImage = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_StreamingService", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Movie",
                 columns: table => new
                 {
@@ -72,6 +85,31 @@ namespace McvMovie.Migrations
                         name: "FK_Movie_Rating_RatingId",
                         column: x => x.RatingId,
                         principalTable: "Rating",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MovieStreaming",
+                columns: table => new
+                {
+                    MovieStreamingId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    MovieId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    StreamingServiceId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    CountryCode = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MovieStreaming", x => x.MovieStreamingId);
+                    table.ForeignKey(
+                        name: "FK_MovieStreaming_Movie_MovieId",
+                        column: x => x.MovieId,
+                        principalTable: "Movie",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_MovieStreaming_StreamingService_StreamingServiceId",
+                        column: x => x.StreamingServiceId,
+                        principalTable: "StreamingService",
                         principalColumn: "Id");
                 });
 
@@ -110,6 +148,16 @@ namespace McvMovie.Migrations
                 column: "RatingId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_MovieStreaming_MovieId",
+                table: "MovieStreaming",
+                column: "MovieId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MovieStreaming_StreamingServiceId",
+                table: "MovieStreaming",
+                column: "StreamingServiceId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Star_ActorId",
                 table: "Star",
                 column: "ActorId");
@@ -124,7 +172,13 @@ namespace McvMovie.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "MovieStreaming");
+
+            migrationBuilder.DropTable(
                 name: "Star");
+
+            migrationBuilder.DropTable(
+                name: "StreamingService");
 
             migrationBuilder.DropTable(
                 name: "Actor");

@@ -18645,6 +18645,11 @@
   "RootNamespace": "McvMovie",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\StreamingServices\\Index.cshtml",
+      "TargetPath": "Views\\StreamingServices\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -18655,8 +18660,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\StreamingServices\\Edit.cshtml",
+      "TargetPath": "Views\\StreamingServices\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\MovieStreaming\\Delete.cshtml",
+      "TargetPath": "Views\\MovieStreaming\\Delete.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18700,6 +18715,21 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\StreamingServices\\Delete.cshtml",
+      "TargetPath": "Views\\StreamingServices\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\MovieStreaming\\Create.cshtml",
+      "TargetPath": "Views\\MovieStreaming\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\MovieStreaming\\Index.cshtml",
+      "TargetPath": "Views\\MovieStreaming\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Genres\\Create.cshtml",
       "TargetPath": "Views\\Genres\\Create.cshtml",
       "FileKind": "mvc"
@@ -18707,6 +18737,11 @@
     {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Movies\\Edit.cshtml",
       "TargetPath": "Views\\Movies\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\StreamingServices\\Create.cshtml",
+      "TargetPath": "Views\\StreamingServices\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18750,6 +18785,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\MovieStreaming\\Edit.cshtml",
+      "TargetPath": "Views\\MovieStreaming\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -18757,6 +18797,11 @@
     {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Genres\\Delete.cshtml",
       "TargetPath": "Views\\Genres\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\MovieStreaming\\Details.cshtml",
+      "TargetPath": "Views\\MovieStreaming\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18772,6 +18817,11 @@
     {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Shared\\Error.cshtml",
       "TargetPath": "Views\\Shared\\Error.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\StreamingServices\\Details.cshtml",
+      "TargetPath": "Views\\StreamingServices\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
