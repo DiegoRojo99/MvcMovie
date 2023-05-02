@@ -69,3 +69,7 @@ footer{
   background: rgb(53,148,107);
   background: linear-gradient(214deg, rgba(53,148,107,1) 0%, rgba(65,200,133,1) 100%);
 }
+
+.col-4 select{
+  width: 100%;
+}
