@@ -145,8 +145,6 @@ namespace McvMovie.Controllers
                             Star s = new Star();
                             s.MovieId=item;
                             s.ActorId=id;
-                            Console.WriteLine("Actor Id: "+s.ActorId);
-                            Console.WriteLine("Movie Id: "+s.MovieId);
                             _context.Add(s);
                         }
                     }

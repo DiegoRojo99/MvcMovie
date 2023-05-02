@@ -83,6 +83,8 @@ namespace McvMovie.Controllers
         // GET: Movies/Create
         public IActionResult Create()
         {
+            
+            ViewBag.Stars = new MultiSelectList(_context.Actor, "Id", "Name");
             return View();
         }
 
@@ -91,11 +93,22 @@ namespace McvMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
+        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,Genre,Price,Rating")] Movie movie, List<Guid> Stars)
         {
             if (ModelState.IsValid)
             {
+                Guid g = Guid.NewGuid();
+                movie.Id=g;
                 _context.Add(movie);
+                if(Stars!=null){
+                    foreach (var item in Stars)
+                    {
+                        Star s = new Star();
+                        s.MovieId=g;
+                        s.ActorId=item;
+                        _context.Add(s);
+                    }
+                }
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -115,6 +128,19 @@ namespace McvMovie.Controllers
             {
                 return NotFound();
             }
+            
+            var allStars=_context.Star.Where(s=> s.MovieId.Equals(id));
+            List<Guid> actorIDs = new List<Guid>();
+
+            foreach (var star in allStars)
+            {
+                if(star.MovieId!=null){
+                    actorIDs.Add((Guid)star.MovieId);
+                }
+            }
+
+            ViewBag.Stars = new MultiSelectList(_context.Actor, "Id", "Name",actorIDs);
+
             return View(movie);
         }
 
@@ -123,7 +149,7 @@ namespace McvMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,ReleaseDate,Genre,Price,Rating")] Movie movie, List<Guid> Stars)
         {
             if (!id.Equals(movie.Id))
             {
@@ -135,6 +161,15 @@ namespace McvMovie.Controllers
                 try
                 {
                     _context.Update(movie);
+                     if(Stars!=null){
+                    foreach (var item in Stars)
+                        {
+                            Star s = new Star();
+                            s.MovieId=id;
+                            s.ActorId=item;
+                            _context.Add(s);
+                        }
+                    }
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
