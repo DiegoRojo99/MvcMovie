@@ -11,8 +11,8 @@ using MvcMovie.Data;
 namespace McvMovie.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    [Migration("20230502134007_streaming")]
-    partial class streaming
+    [Migration("20230502145741_poster")]
+    partial class poster
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,9 @@ namespace McvMovie.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(60)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Picture")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -66,6 +69,13 @@ namespace McvMovie.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<Guid?>("GenreId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Overview")
+                        .HasMaxLength(120)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Poster")
                         .HasColumnType("TEXT");
 
                     b.Property<Guid?>("RatingId")

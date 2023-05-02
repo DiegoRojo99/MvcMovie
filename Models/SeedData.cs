@@ -34,7 +34,9 @@ public static class SeedData
                     Title = "Ghostbusters ",
                     ReleaseDate = DateTime.Parse("1984-3-13"),
                     RatingId = Guid.Parse("55D72728-18C8-4ABE-BAA9-A60725774C76"),
-                    GenreId = Guid.Parse("4ACCB5CD-30D3-448C-A43B-071DE1DBE786")
+                    GenreId = Guid.Parse("4ACCB5CD-30D3-448C-A43B-071DE1DBE786"),
+                    Poster = "https://i.etsystatic.com/20512669/r/il/b86014/2268047424/il_fullxfull.2268047424_93rq.jpg",
+                    Overview = "Three parapsychologists forced out of their university funding set up shop as a unique ghost removal service in New York City, attracting frightened yet skeptical customers."
                 },
                 new Movie
                 {
@@ -63,7 +65,8 @@ public static class SeedData
                 {
                     Id = Guid.Parse("18375BA7-288E-4F74-9D5E-5C57559650E3"),
                     Name = "Bill Murray",
-                    Dob = DateTime.Parse("1950-9-21")
+                    Dob = DateTime.Parse("1950-9-21"),
+                    Picture = "https://www.themoviedb.org/t/p/w500/nnCsJc9x3ZiG3AFyiyc3FPehppy.jpg"
                 });
             if (context.Star.Any())
             {

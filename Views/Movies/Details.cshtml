@@ -8,58 +8,38 @@
 
 <div>
     <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ReleaseDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ReleaseDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Genre)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Genre.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Rating)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Rating.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Stars)
-        </dt>
-        <dd class = "col-sm-10">
-            @if(@Model.Stars != null){
-                @foreach(var item in @Model.Stars){
+        <div class="col-6">
+            <img class="poster" src="@Url.Content(Model.Poster)" />
+        </div>
+        <div class="col-4">
+        <p><span>Actors</span></p>
+        <div class="row">
+           @if(@Model.Stars != null){
+            @foreach(var item in @Model.Stars){
+                <div class="col">
                     @if(@item.Actor!=null){
-                        <a href="http://localhost:5073/Actors/Details/@item.ActorId" class="list-item">@item.Actor.Name</a>
-                        <br />
+                        <a href="http://localhost:5073/Actors/Details/@item.ActorId" class="list-item"><img class="actor-pic-movie" src="@item.Actor.Picture" /></a>
                     }
-                }
+                </div>
             }
-        </dd>
+        } 
+        </div>
         
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Streams)
-        </dt>
-        <dd class = "col-sm-10">
-            @if(@Model.Streams != null){
-                @foreach(var item in @Model.Streams){
-                    @if(@item.StreamingService!=null){
-                        <a href="http://localhost:5073/StreamingServices/Details/@item.StreamingServiceId" class="list-item">@item.StreamingService.Name</a>
-                        <br />
-                    }
+        <br/>
+        <p><span>Streaming Services</span></p>
+        @if(@Model.Streams != null){
+            @foreach(var item in @Model.Streams){
+                @if(@item.StreamingService!=null){
+                    <a href="http://localhost:5073/StreamingServices/Details/@item.StreamingServiceId" class="list-item">@item.StreamingService.Name</a>
+                    <br />
                 }
             }
-        </dd>
+        }
+        </div>
     </dl>
+    <dl class="row">
+        <p class="overview">@Model.Overview</p>
+    </dl>    
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |

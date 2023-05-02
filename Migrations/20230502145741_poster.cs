@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace McvMovie.Migrations
 {
     /// <inheritdoc />
-    public partial class streaming : Migration
+    public partial class poster : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,8 @@ namespace McvMovie.Migrations
                 {
                     Id = table.Column<Guid>(type: "TEXT", nullable: false),
                     Name = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
-                    Dob = table.Column<DateTime>(type: "TEXT", nullable: false)
+                    Dob = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Picture = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -71,7 +72,9 @@ namespace McvMovie.Migrations
                     Title = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
                     ReleaseDate = table.Column<DateTime>(type: "TEXT", nullable: false),
                     RatingId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    GenreId = table.Column<Guid>(type: "TEXT", nullable: true)
+                    GenreId = table.Column<Guid>(type: "TEXT", nullable: true),
+                    Poster = table.Column<string>(type: "TEXT", nullable: true),
+                    Overview = table.Column<string>(type: "TEXT", maxLength: 120, nullable: true)
                 },
                 constraints: table =>
                 {

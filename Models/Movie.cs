@@ -24,4 +24,8 @@ public class Movie
     public ICollection<MovieStreaming>? Streams { get; set; }
     public Guid? GenreId { get; set; }
     public Genre? Genre { get; set; }
+    public String? Poster { get; set; }
+    
+    [StringLength(120)]
+    public String? Overview { get; set; }
 }

@@ -73,3 +73,14 @@ footer{
 .col-4 select{
   width: 100%;
 }
+.poster{
+  width: 60%;
+  float: right;
+}
+.overview{
+  text-align: center;
+  padding: 0 25%;
+}
+.actor-pic-movie{
+  max-width: 80px;
+}

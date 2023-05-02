@@ -31,6 +31,9 @@ namespace McvMovie.Migrations
                         .HasMaxLength(60)
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Picture")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.ToTable("Actor");
@@ -63,6 +66,13 @@ namespace McvMovie.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<Guid?>("GenreId")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Overview")
+                        .HasMaxLength(120)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Poster")
                         .HasColumnType("TEXT");
 
                     b.Property<Guid?>("RatingId")

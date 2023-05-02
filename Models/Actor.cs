@@ -17,6 +17,8 @@ public class Actor
     [DataType(DataType.Date)]
     public DateTime Dob { get; set; }
 
+    public string? Picture { get; set; }
+
     public ICollection<Star>? Stars { get; set; }
 
 }
