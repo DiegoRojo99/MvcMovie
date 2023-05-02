@@ -27,6 +27,7 @@ namespace McvMovie.Controllers
             }
 
             IQueryable<Guid?> genreQuery = from m in _context.Movie orderby m.GenreId select m.GenreId;
+            IQueryable<Genre?> genresQuery = from m in _context.Movie orderby m.Genre select m.Genre;
             IQueryable<string> ratingQuery = from m in _context.Movie orderby m.Rating select m.Rating;
             var movies = from m in _context.Movie select m;
 
@@ -34,7 +35,10 @@ namespace McvMovie.Controllers
                 movies = movies.Where(s => s.Title!.Contains(searchString));
             }
             if(!String.IsNullOrEmpty(movieGenre)){
-                movies = movies.Where(x => x.GenreId.Equals(movieGenre));
+                movies = movies.Where(m => m.GenreId.Equals(Guid.Parse(movieGenre)));
+                Console.WriteLine("We Here");
+                Console.WriteLine("MC: "+movies.Count());
+                Console.WriteLine("Movie Genre: "+movieGenre);
             }
             if(!String.IsNullOrEmpty(movieRating)){
                 movies = movies.Where(x => x.Rating == movieRating);
@@ -43,7 +47,7 @@ namespace McvMovie.Controllers
                 movies = movies.Where(x => x.Rating == moviePrice);
             }
             var movieGenreVM = new MovieGenreViewModel{
-                Genres = new SelectList(await genreQuery.Distinct().ToListAsync()),
+                Genres = new SelectList(_context.Genre,"Id","Name"),
                 Ratings = new SelectList(await ratingQuery.Distinct().ToListAsync()),
                 Movies = await movies.ToListAsync()
             };
