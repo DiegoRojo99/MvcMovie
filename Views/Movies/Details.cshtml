@@ -45,6 +45,20 @@
                 }
             }
         </dd>
+        
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Streams)
+        </dt>
+        <dd class = "col-sm-10">
+            @if(@Model.Streams != null){
+                @foreach(var item in @Model.Streams){
+                    @if(@item.StreamingService!=null){
+                        <a href="http://localhost:5073/StreamingServices/Details/@item.StreamingServiceId" class="list-item">@item.StreamingService.Name</a>
+                        <br />
+                    }
+                }
+            }
+        </dd>
     </dl>
 </div>
 <div>

@@ -36,6 +36,10 @@
                 <label asp-for="Rating" class="control-label"></label><br/>
                 @Html.DropDownListFor(m => m.RatingId,(SelectList)ViewBag.Ratings)
             </div>
+            <div class="form-group">
+                <label asp-for="Streams" class="control-label"></label><br/>
+                @Html.ListBoxFor(m => m.Streams,(MultiSelectList)ViewBag.Streams)
+            </div>
         </div>
         <div class="col-4">   
             <div class="form-group">

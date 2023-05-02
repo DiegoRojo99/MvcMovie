@@ -94,7 +94,18 @@ namespace McvMovie.Controllers
                     }
                 }
             } 
-            
+            var streams= _context.MovieStreaming.Where(s => s.MovieId == movie.Id);
+            var streamingServices = _context.StreamingService;
+            foreach(var stream in streams)
+            {
+                foreach(var ss in streamingServices)
+                { 
+                    if(ss.Id.Equals(stream.StreamingServiceId)){  
+                        movie.Streams.Add(stream);
+                    }
+                }
+            } 
+
             foreach(var g in _context.Genre)
             {
                 if(g.Id.Equals(movie.GenreId)){  
@@ -112,11 +123,11 @@ namespace McvMovie.Controllers
 
         // GET: Movies/Create
         public IActionResult Create()
-        {
-            
+        { 
             ViewBag.Genres = new SelectList(_context.Genre, "Id", "Name");
             ViewBag.Ratings = new SelectList(_context.Rating, "Id", "Name");
             ViewBag.Stars = new MultiSelectList(_context.Actor, "Id", "Name");
+            ViewBag.Streams = new MultiSelectList(_context.StreamingService, "Id", "Name");
             return View();
         }
 
@@ -125,7 +136,7 @@ namespace McvMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,GenreId,Price,RatingId")] Movie movie, List<Guid> Stars)
+        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,GenreId,Price,RatingId")] Movie movie, List<Guid> Stars, List<Guid> Streams)
         {
             if (ModelState.IsValid)
             {
@@ -141,6 +152,15 @@ namespace McvMovie.Controllers
                         _context.Add(s);
                     }
                 }
+                if(Streams!=null){
+                        foreach (var item in Streams)
+                        {
+                            MovieStreaming s = new MovieStreaming();
+                            s.MovieId=g;
+                            s.StreamingServiceId=item;
+                            _context.Add(s);
+                        }
+                    }
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -171,6 +191,7 @@ namespace McvMovie.Controllers
                 }
             }
 
+            ViewBag.Streams = new MultiSelectList(_context.StreamingService, "Id", "Name");
             ViewBag.Genres = new SelectList(_context.Genre, "Id", "Name");
             ViewBag.Ratings = new SelectList(_context.Rating, "Id", "Name");
             ViewBag.Stars = new MultiSelectList(_context.Actor, "Id", "Name",actorIDs);
@@ -183,7 +204,7 @@ namespace McvMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,ReleaseDate,GenreId,Price,RatingId")] Movie movie, List<Guid> Stars)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,ReleaseDate,GenreId,Price,RatingId")] Movie movie, List<Guid> Stars, List<Guid> Streams)
         {
             if (!id.Equals(movie.Id))
             {
@@ -195,12 +216,21 @@ namespace McvMovie.Controllers
                 try
                 {
                     _context.Update(movie);
-                     if(Stars!=null){
-                    foreach (var item in Stars)
+                    if(Stars!=null){
+                        foreach (var item in Stars)
                         {
                             Star s = new Star();
                             s.MovieId=id;
                             s.ActorId=item;
+                            _context.Add(s);
+                        }
+                    }
+                    if(Streams!=null){
+                        foreach (var item in Streams)
+                        {
+                            MovieStreaming s = new MovieStreaming();
+                            s.MovieId=id;
+                            s.StreamingServiceId=item;
                             _context.Add(s);
                         }
                     }
