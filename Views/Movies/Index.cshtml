@@ -38,9 +38,6 @@
                 @Html.DisplayNameFor(model => model.Movies![0].Genre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Movies![0].Price)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Movies![0].Rating)
             </th>
             <th></th>
@@ -60,10 +57,7 @@
                     @Html.DisplayFor(modelItem => item.Genre.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Rating)
+                    @Html.DisplayFor(modelItem => item.Rating.Name)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen-to-square fa-xl"></i></a> |

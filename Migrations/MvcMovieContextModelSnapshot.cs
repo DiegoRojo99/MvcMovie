@@ -65,12 +65,7 @@ namespace McvMovie.Migrations
                     b.Property<Guid?>("GenreId")
                         .HasColumnType("TEXT");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<string>("Rating")
-                        .IsRequired()
-                        .HasMaxLength(5)
+                    b.Property<Guid?>("RatingId")
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("ReleaseDate")
@@ -85,7 +80,29 @@ namespace McvMovie.Migrations
 
                     b.HasIndex("GenreId");
 
+                    b.HasIndex("RatingId");
+
                     b.ToTable("Movie");
+                });
+
+            modelBuilder.Entity("MvcMovie.Models.Rating", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(120)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Rating");
                 });
 
             modelBuilder.Entity("MvcMovie.Models.Star", b =>
@@ -115,7 +132,13 @@ namespace McvMovie.Migrations
                         .WithMany("Movies")
                         .HasForeignKey("GenreId");
 
+                    b.HasOne("MvcMovie.Models.Rating", "Rating")
+                        .WithMany("Movies")
+                        .HasForeignKey("RatingId");
+
                     b.Navigation("Genre");
+
+                    b.Navigation("Rating");
                 });
 
             modelBuilder.Entity("MvcMovie.Models.Star", b =>
@@ -146,6 +169,11 @@ namespace McvMovie.Migrations
             modelBuilder.Entity("MvcMovie.Models.Movie", b =>
                 {
                     b.Navigation("Stars");
+                });
+
+            modelBuilder.Entity("MvcMovie.Models.Rating", b =>
+                {
+                    b.Navigation("Movies");
                 });
 #pragma warning restore 612, 618
         }

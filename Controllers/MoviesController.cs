@@ -20,15 +20,14 @@ namespace McvMovie.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index(string movieGenre,string searchString, string movieRating, string moviePrice)
+        public async Task<IActionResult> Index(string movieGenre,string searchString, string movieRating)
         {
             if(_context.Movie == null){
                 return Problem("Entity set 'MvcMovieContext.Movie' is null.");
             }
 
             IQueryable<Guid?> genreQuery = from m in _context.Movie orderby m.GenreId select m.GenreId;
-            IQueryable<Genre?> genresQuery = from m in _context.Movie orderby m.Genre select m.Genre;
-            IQueryable<string> ratingQuery = from m in _context.Movie orderby m.Rating select m.Rating;
+            IQueryable<Guid?> ratingQuery = from m in _context.Movie orderby m.RatingId select m.RatingId;
             var movies = from m in _context.Movie select m;
 
             if(!String.IsNullOrEmpty(searchString)){
@@ -36,19 +35,13 @@ namespace McvMovie.Controllers
             }
             if(!String.IsNullOrEmpty(movieGenre)){
                 movies = movies.Where(m => m.GenreId.Equals(Guid.Parse(movieGenre)));
-                Console.WriteLine("We Here");
-                Console.WriteLine("MC: "+movies.Count());
-                Console.WriteLine("Movie Genre: "+movieGenre);
             }
             if(!String.IsNullOrEmpty(movieRating)){
-                movies = movies.Where(x => x.Rating == movieRating);
-            }
-            if(!String.IsNullOrEmpty(moviePrice)){
-                movies = movies.Where(x => x.Rating == moviePrice);
+                movies = movies.Where(m => m.RatingId.Equals(Guid.Parse(movieRating)));
             }
             var movieGenreVM = new MovieGenreViewModel{
                 Genres = new SelectList(_context.Genre,"Id","Name"),
-                Ratings = new SelectList(await ratingQuery.Distinct().ToListAsync()),
+                Ratings = new SelectList(_context.Rating,"Id","Name"),
                 Movies = await movies.ToListAsync()
             };
             
@@ -59,6 +52,15 @@ namespace McvMovie.Controllers
                 {
                     if(m.GenreId.Equals(g.Id)){
                         m.Genre=g;
+                    }
+                }
+            } 
+            foreach (var r in _context.Rating)
+            {
+                foreach (var m in movies)
+                {
+                    if(m.RatingId.Equals(r.Id)){
+                        m.Rating=r;
                     }
                 }
             }       
@@ -92,6 +94,19 @@ namespace McvMovie.Controllers
                     }
                 }
             } 
+            
+            foreach(var g in _context.Genre)
+            {
+                if(g.Id.Equals(movie.GenreId)){  
+                    movie.Genre=g;
+                }
+            } 
+            foreach(var r in _context.Rating)
+            {
+                if(r.Id.Equals(movie.RatingId)){  
+                    movie.Rating=r;
+                }
+            } 
             return View(movie);
         }
 
@@ -100,6 +115,7 @@ namespace McvMovie.Controllers
         {
             
             ViewBag.Genres = new SelectList(_context.Genre, "Id", "Name");
+            ViewBag.Ratings = new SelectList(_context.Rating, "Id", "Name");
             ViewBag.Stars = new MultiSelectList(_context.Actor, "Id", "Name");
             return View();
         }
@@ -109,7 +125,7 @@ namespace McvMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,GenreId,Price,Rating")] Movie movie, List<Guid> Stars)
+        public async Task<IActionResult> Create([Bind("Id,Title,ReleaseDate,GenreId,Price,RatingId")] Movie movie, List<Guid> Stars)
         {
             if (ModelState.IsValid)
             {
@@ -125,7 +141,6 @@ namespace McvMovie.Controllers
                         _context.Add(s);
                     }
                 }
-                ViewBag.Genres = new SelectList(_context.Genre, "Id", "Name");
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -157,6 +172,7 @@ namespace McvMovie.Controllers
             }
 
             ViewBag.Genres = new SelectList(_context.Genre, "Id", "Name");
+            ViewBag.Ratings = new SelectList(_context.Rating, "Id", "Name");
             ViewBag.Stars = new MultiSelectList(_context.Actor, "Id", "Name",actorIDs);
 
             return View(movie);
@@ -167,7 +183,7 @@ namespace McvMovie.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,ReleaseDate,GenreId,Price,Rating")] Movie movie, List<Guid> Stars)
+        public async Task<IActionResult> Edit(Guid id, [Bind("Id,Title,ReleaseDate,GenreId,Price,RatingId")] Movie movie, List<Guid> Stars)
         {
             if (!id.Equals(movie.Id))
             {
@@ -220,6 +236,19 @@ namespace McvMovie.Controllers
             {
                 return NotFound();
             }
+            
+            foreach(var g in _context.Genre)
+            {
+                if(g.Id.Equals(movie.GenreId)){  
+                    movie.Genre=g;
+                }
+            } 
+            foreach(var r in _context.Rating)
+            {
+                if(r.Id.Equals(movie.RatingId)){  
+                    movie.Rating=r;
+                }
+            } 
 
             return View(movie);
         }

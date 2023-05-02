@@ -17,15 +17,8 @@ public class Movie
     [DataType(DataType.Date)]
     public DateTime ReleaseDate { get; set; }
 
-    [Range(1,100)]
-    [DataType(DataType.Currency)]
-    [Column(TypeName = "decimal(18,2)")]
-    public decimal Price { get; set; }
-
-    [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$")]
-    [StringLength(5)]
-    [Required]
-    public string? Rating { get; set; }
+    public Rating? Rating { get; set; }
+    public Guid? RatingId { get; set; }
     
     public ICollection<Star>? Stars { get; set; }
     public Guid? GenreId { get; set; }
