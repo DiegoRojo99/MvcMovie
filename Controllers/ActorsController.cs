@@ -187,7 +187,7 @@ namespace McvMovie.Controllers
         // POST: Actors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             if (_context.Actor == null)
             {
@@ -196,6 +196,11 @@ namespace McvMovie.Controllers
             var actor = await _context.Actor.FindAsync(id);
             if (actor != null)
             {
+                var starMatches = _context.Star.Where(star => star.ActorId == id);
+                foreach (var item in starMatches)
+                {
+                    _context.Star.Remove(item);
+                }
                 _context.Actor.Remove(actor);
             }
             
