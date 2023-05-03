@@ -33,8 +33,10 @@
         @if(@Model.Streams != null){
             @foreach(var item in @Model.Streams){
                 @if(@item.StreamingService!=null){
-                    <a href="http://localhost:5073/StreamingServices/Details/@item.StreamingServiceId" class="list-item"><img class="actor-pic-movie" src=@item.StreamingService.LogoImage /></a>
-                    <br />
+                    <div class="col">
+                        <a href="http://localhost:5073/StreamingServices/Details/@item.StreamingServiceId" class="list-item"><img class="actor-pic-movie" src=@item.StreamingService.LogoImage /></a>
+                        <br />
+                    </div>
                 }
             }
         }

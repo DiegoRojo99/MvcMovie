@@ -129,6 +129,15 @@ namespace McvMovie.Controllers
                     movie.Rating=r;
                 }
             } 
+            List<Guid?> listIds = new List<Guid?>();
+            foreach (var item in movie.Streams)
+            {
+                if(listIds.Contains(item.StreamingServiceId)){   
+                    movie.Streams.Remove(item);
+                }else{
+                    listIds.Add(item.StreamingServiceId);
+                }
+            }
             return View(movie);
         }
 
