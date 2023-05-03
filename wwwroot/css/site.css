@@ -87,6 +87,15 @@ footer{
 .movie-in-actor{
   max-width: 160px;
 }
+.all-actors{
+  max-width: 160px;
+  margin: 0 auto;
+  border: 1px solid black;
+}
+.actors-a{
+  text-align: center;
+  margin: 8px 0;
+}
 .actor-pic{
   max-width: 360px;
 }
@@ -100,4 +109,12 @@ footer{
 .streaming-logo-a, .streaming-logo{
   width: 160px;
   margin-right: 8px;
+}
+.actors-col{
+  text-align: center;
+}
+.icons-row{
+  width: 160px;
+  margin: 0 auto;
+  text-align: center;
 }
