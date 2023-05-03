@@ -7,6 +7,9 @@
 <h1>@Model.Title</h1>
 
 <div>
+    <div class="row movie-info">
+        <p>@Model.ReleaseDate.Year | @Model.Genre.Name | @Model.Rating.Name</p>
+    </div>
     <dl class="row">
         <div class="col-6">
             <img class="poster" src="@Url.Content(Model.Poster)" />
@@ -30,7 +33,7 @@
         @if(@Model.Streams != null){
             @foreach(var item in @Model.Streams){
                 @if(@item.StreamingService!=null){
-                    <a href="http://localhost:5073/StreamingServices/Details/@item.StreamingServiceId" class="list-item">@item.StreamingService.Name</a>
+                    <a href="http://localhost:5073/StreamingServices/Details/@item.StreamingServiceId" class="list-item"><img class="actor-pic-movie" src=@item.StreamingService.LogoImage /></a>
                     <br />
                 }
             }

@@ -28,6 +28,14 @@ public static class SeedData
                     RatingId = Guid.Parse("55D72728-18C8-4ABE-BAA9-A60725774C76"),
                     GenreId = Guid.Parse("4ACCB5CD-30D3-448C-A43B-071DE1DBE786")
                 },
+                new Movie{
+                    Id = Guid.Parse("F879043B-EBC7-4368-9DE6-5C9148901C7C"),
+                    Title = "The Super Mario Bros. Movie",
+                    ReleaseDate = DateTime.Parse("2023-4-7"),
+                    RatingId = Guid.Parse("8EB6E3A3-4BD5-4005-B57F-BC4151068520"),
+                    GenreId = Guid.Parse("500E34D8-9118-4B03-ABE6-AE89A7A3C194"),
+                    Poster= "https://www.themoviedb.org/t/p/w500/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg"
+                },
                 new Movie
                 {
                     Id = Guid.Parse("1A65BD8E-F74D-444F-85ED-875292332AE5"),
@@ -53,6 +61,14 @@ public static class SeedData
                     ReleaseDate = DateTime.Parse("1959-4-15"),
                     RatingId = Guid.Parse("7C27B79E-8839-4C56-9489-466D7F43991C"),
                     GenreId = Guid.Parse("3850EB96-5E36-4A26-A3F7-B816E33E2B83")
+                },
+                new Movie
+                {
+                    Id = Guid.Parse("18967EB4-E653-4852-8D18-016f489E76AB"),
+                    Title = "Fight Club",
+                    ReleaseDate = DateTime.Parse("2001-4-15"),
+                    RatingId = Guid.Parse("7C27B79E-8839-4C56-9489-466D7F43991C"),
+                    GenreId = Guid.Parse("3850EB96-5E36-4A26-A3F7-B816E33E2B83")
                 }
             );
             //Look for actors
@@ -67,6 +83,31 @@ public static class SeedData
                     Name = "Bill Murray",
                     Dob = DateTime.Parse("1950-9-21"),
                     Picture = "https://www.themoviedb.org/t/p/w500/nnCsJc9x3ZiG3AFyiyc3FPehppy.jpg"
+                },
+                new Actor
+                {
+                    Id = Guid.Parse("DFC7F83B-B60C-4092-B166-A300BD9AD2B1"),
+                    Name = "Brad Pitt",
+                    Dob = DateTime.Parse("1950-9-21"),
+                    Picture = "https://www.themoviedb.org/t/p/original/tJiSUYst4ddIaz1zge2LqCtu9tw.jpg"
+                },new Actor
+                {
+                    Id = Guid.Parse("10067C7B-B8AA-4625-821B-481233851368"),
+                    Name = "Keanu Reeves",
+                    Dob = DateTime.Parse("1950-9-21"),
+                    Picture = "https://www.themoviedb.org/t/p/w500/4D0PpNI0kmP58hgrwGC3wCjxhnm.jpg"
+                },new Actor
+                {
+                    Id = Guid.Parse("24CA6D2B-28B8-48F9-A4FF-2AFB658668F4"),
+                    Name = "Edward Norton",
+                    Dob = DateTime.Parse("1950-9-21"),
+                    Picture = "https://www.themoviedb.org/t/p/w500/8nytsqL59SFJTVYVrN72k6qkGgJ.jpg"
+                },new Actor
+                {
+                    Id = Guid.Parse("7E8AEE99-ADC9-4614-90CC-5ACB4CA754D6"),
+                    Name = "Chris Pratt",
+                    Dob = DateTime.Parse("1982-8-21"),
+                    Picture = "https://www.themoviedb.org/t/p/original/83o3koL82jt30EJ0rz4Bnzrt2dd.jpg"
                 });
             if (context.Star.Any())
             {
@@ -81,6 +122,17 @@ public static class SeedData
                 {
                     ActorId = Guid.Parse("18375BA7-288E-4F74-9D5E-5C57559650E3"),
                     MovieId = Guid.Parse("664DEA07-3035-4199-8118-7F646FE38BB6")
+                },new Star
+                {
+                    ActorId = Guid.Parse("24CA6D2B-28B8-48F9-A4FF-2AFB658668F4"),
+                    MovieId = Guid.Parse("18967EB4-E653-4852-8D18-016f489E76AB")
+                },new Star
+                {
+                    ActorId = Guid.Parse("DFC7F83B-B60C-4092-B166-A300BD9AD2B1"),
+                    MovieId = Guid.Parse("18967EB4-E653-4852-8D18-016f489E76AB")
+                },new Star{
+                    MovieId = Guid.Parse("F879043B-EBC7-4368-9DE6-5C9148901C7C"),
+                    ActorId = Guid.Parse("7E8AEE99-ADC9-4614-90CC-5ACB4CA754D6")
                 });
             if (context.StreamingService.Any())
             {
@@ -90,7 +142,8 @@ public static class SeedData
                 new StreamingService
                 {
                     Id = Guid.Parse("9C52557C-E17C-4AC0-97F3-267A79B4D718"),
-                    Name = "Disney+"
+                    Name = "Disney+",
+                    LogoImage = "https://store-images.s-microsoft.com/image/apps.6899.14495311847124170.e89a4dce-fd9a-4a10-b8e4-a6c3aa1c055e.bcea8b9e-9a72-45eb-a2fc-e265b7dc1915"
                 },new StreamingService
                 {
                     Id = Guid.Parse("8993AA19-7FB2-42BB-9C82-623B4E2AF0E6"),

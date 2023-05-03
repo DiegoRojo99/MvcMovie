@@ -7,37 +7,28 @@
 <h1>@Model.Name</h1>
 
 <div>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Dob)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Dob)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Stars)
-        </dt>
-        <dd class = "col-sm-10">
-            @if(@Model.Stars != null){
+    <div class="row">
+        <div class="col-4">
+            <img class="actor-pic" src="@Model.Picture" />
+        </div>
+        <div class="col-6">
+            <img class="actor-trailer" />
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <h4>Movies</h4>
+    <div class="row">
+        @if(@Model.Stars != null){
                 @foreach(var item in @Model.Stars){
-                    <a href="http://localhost:5073/Movies/Details/@item.MovieId" class="list-item">@item.Movie.Title</a>
-                    <br />
+                    <div class="col">
+                        <a href="http://localhost:5073/Movies/Details/@item.MovieId" class="list-item">
+                            <img class="movie-in-actor" src="@item.Movie.Poster" alt="@item.Movie.Title" />
+                        </a>
+                    </div>
                 }
             }
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Picture)
-        </dt>
-        <dd class = "col-sm-10">
-            <img src="@Model.Picture" />
-        </dd>
-    </dl>
+    </div>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |

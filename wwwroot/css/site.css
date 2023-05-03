@@ -84,3 +84,16 @@ footer{
 .actor-pic-movie{
   max-width: 80px;
 }
+.movie-in-actor{
+  max-width: 160px;
+}
+.actor-pic{
+  max-width: 360px;
+}
+.actor-trailer{
+  max-width: 1080px;
+  max-height: 780px;
+}
+.movie-info{
+  text-align: center;
+}
