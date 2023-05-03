@@ -20,10 +20,38 @@ namespace McvMovie.Controllers
         }
 
         // GET: MovieStreaming
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string countryCode, Guid movie)
         {
-            var mvcMovieContext = _context.MovieStreaming.Include(m => m.Movie).Include(m => m.StreamingService);
-            return View(await mvcMovieContext.ToListAsync());
+            if(_context.Movie == null){
+                return Problem("Entity set 'MvcMovieContext.Movie' is null.");
+            }
+            var streams = from ms in _context.MovieStreaming select ms;
+            IQueryable<string> countryCodeQuery = from s in _context.MovieStreaming orderby s.CountryCode select s.CountryCode;
+
+            if(!String.IsNullOrEmpty(countryCode)){
+                streams = streams.Where(s => s.CountryCode == countryCode);
+            }
+            if(!String.IsNullOrEmpty(movie.ToString())){
+                streams = streams.Where(s => s.MovieId == movie);
+            }
+            var movieGenreVM = new MovieStreamingViewModel{
+                Movies = new SelectList(_context.Movie,"Id","Title"),
+                CountryCodes = new SelectList(await countryCodeQuery.Distinct().ToListAsync()),
+                Streams = await streams.ToListAsync()
+            };
+            
+            
+            foreach (var ss in _context.StreamingService)
+            {
+                foreach (var s in streams)
+                {
+                    if(s.StreamingServiceId.Equals(ss.Id)){
+                        s.StreamingService=ss;
+                    }
+                }
+            }    
+            
+            return View(movieGenreVM);
         }
 
         // GET: MovieStreaming/Details/5
