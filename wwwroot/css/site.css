@@ -97,3 +97,7 @@ footer{
 .movie-info{
   text-align: center;
 }
+.streaming-logo-a, .streaming-logo{
+  width: 160px;
+  margin-right: 8px;
+}

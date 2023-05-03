@@ -4,16 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<h1>Find Streaming Service</h1>
 
 <form asp-controller="MovieStreaming" asp-action="Index" method="get">
     <p>
 
-        <select id="movie-searcher" asp-for="Movie" asp-items="Model.Movies">
+        <select id="movie-searcher" asp-for="Movie" asp-items="Model.Movies" class="selectpicker" data_live_search="true">
             <option value="">All Movies</option>
         </select>
         
@@ -24,18 +20,8 @@
         <input type="submit" value="Filter" />
     </p>
 </form>
-<div class="row">      
+<div class="row">   
     @foreach (var item in Model.Streams!) {
-            <div class="col">
-                <a href="http://localhost:5073/StreamingServices/Details/@item.StreamingService.Id"><img src="@item.StreamingService.LogoImage" alt="@item.StreamingService.Name"/></a>
-            </div>
+            <a class="streaming-logo-a" href="http://localhost:5073/StreamingServices/Details/@item.StreamingService.Id"><img class="streaming-logo" src="@item.StreamingService.LogoImage" alt="@item.StreamingService.Name"/></a>
     }
 </div>
-
-@section Scripts{
-    <script type="text/javascript">
-        $(function () {
-            $("#movie-searcher").chosen();
-        });
-    </script>
-}
