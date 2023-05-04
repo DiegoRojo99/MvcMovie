@@ -48,7 +48,7 @@ namespace McvMovie.Controllers
             {
                 foreach(var movie in movies)
                 { 
-                    if(movie.Id.Equals(star.MovieId)){  
+                    if(movie.Id.Equals(star.MovieId) && actor!=null && actor.Stars!=null){  
                         actor.Stars.Add(star);
                     }
                 }

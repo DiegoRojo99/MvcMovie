@@ -2,8 +2,6 @@
 
 @{
     ViewData["Title"] = "Details";
-    var actorName=ViewData["actorName"].ToString();
-    var movieName=ViewData["movieName"].ToString();
 }
 
 <h1>Details</h1>
@@ -11,20 +9,22 @@
 <div>
     <h4>Star</h4>
     <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Movie.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => movieName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Actor.Name)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => actorName)
-        </dd>
-    </dl>
+    @if(Model!=null && @Model.Movie!=null && @Model.Actor!=null){
+        <dl class="row">
+            <dt class = "col-sm-2">
+                Movie Title
+            </dt>
+            <dd class = "col-sm-10">
+                @Model.Movie.Title
+            </dd>
+            <dt class = "col-sm-2">
+                Actor Name
+            </dt>
+            <dd class = "col-sm-10">
+                @Model.Actor.Name
+            </dd>
+        </dl>
+    }
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.StarId">Edit</a> |

@@ -13,32 +13,33 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Movie.Title)
+                Movie Title
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Actor.Name)
+                Actor Name
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @if(item!=null){
-                    @Html.DisplayFor(modelItem => item.Movie.Title)
+        @if(@item!=null && @item.Movie!=null && @item.Actor!=null && @item.StarId!=0){
+            <tr>
+                <td>
+                    @item.Movie.Title
+                </td>
+                <td>
+                    @item.Actor.Name                    
+                </td>
+                @if(@item!=null){
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.StarId"><i class="fa-solid fa-pen-to-square fa-xl"></i></a> |
+                    <a asp-action="Details" asp-route-id="@item.StarId"><i class="fa-solid fa-circle-info fa-xl"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.StarId"><i class="fa-solid fa-trash fa-xl"></i></a>
+                </td>  
                 }
-            </td>
-            <td>@if(item!=null){
-                    @Html.DisplayFor(modelItem => item.Actor.Name)
-                }
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.StarId"><i class="fa-solid fa-pen-to-square fa-xl"></i></a> |
-                <a asp-action="Details" asp-route-id="@item.StarId"><i class="fa-solid fa-circle-info fa-xl"></i></a> |
-                <a asp-action="Delete" asp-route-id="@item.StarId"><i class="fa-solid fa-trash fa-xl"></i></a>
-            </td>
-        </tr>
+            </tr>
+        }
 }
     </tbody>
 </table>

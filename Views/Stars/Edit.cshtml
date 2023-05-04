@@ -2,6 +2,8 @@
 
 @{
     ViewData["Title"] = "Edit";
+    var allActors = ViewData["actors"] as IEnumerable<MvcMovie.Models.Actor>;
+    var allMovies = ViewData["movies"] as IEnumerable<MvcMovie.Models.Movie>;
 }
 
 <h1>Edit</h1>
@@ -16,8 +18,8 @@
             <div class="form-group">
                 <label asp-for="MovieId" class="control-label"></label>
                 <select id="movie-choices-select" asp-for="MovieId" class="form-control">
-                    @if(ViewData["movies"] != null){
-                        @foreach (var movie in ViewData["movies"] as IEnumerable<MvcMovie.Models.Movie>)
+                    @if(allMovies != null){
+                        @foreach (var movie in allMovies)
                             {
                                 <option value=@movie.Id>@movie.Title</option>
                             }
@@ -28,8 +30,8 @@
             <div class="form-group">
                 <label asp-for="ActorId" class="control-label"></label>
                 <select id="actor-choices-select" asp-for="ActorId" class="form-control">
-                    @if(ViewData["actors"] != null){
-                        @foreach (var actor in ViewData["actors"] as IEnumerable<MvcMovie.Models.Actor>)
+                    @if(allActors != null){
+                        @foreach (var actor in allActors)
                             {
                                 <option value=@actor.Id>@actor.Name</option>
                             }

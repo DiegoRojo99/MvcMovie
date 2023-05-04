@@ -100,7 +100,7 @@ namespace McvMovie.Controllers
             {
                 foreach(var actor in actors)
                 { 
-                    if(actor.Id.Equals(star.ActorId)){  
+                    if(actor.Id.Equals(star.ActorId) && movie!=null && movie.Stars!=null){  
                         movie.Stars.Add(star);
                     }
                 }
@@ -111,7 +111,7 @@ namespace McvMovie.Controllers
             {
                 foreach(var ss in streamingServices)
                 { 
-                    if(ss.Id.Equals(stream.StreamingServiceId)){  
+                    if(ss.Id.Equals(stream.StreamingServiceId) && movie!=null && movie.Streams!=null){  
                         movie.Streams.Add(stream);
                     }
                 }
@@ -130,12 +130,14 @@ namespace McvMovie.Controllers
                 }
             } 
             List<Guid?> listIds = new List<Guid?>();
-            foreach (var item in movie.Streams)
-            {
-                if(listIds.Contains(item.StreamingServiceId)){   
-                    movie.Streams.Remove(item);
-                }else{
-                    listIds.Add(item.StreamingServiceId);
+            if(movie!=null && movie.Streams!=null){
+                foreach (var item in movie.Streams)
+                {
+                    if(listIds.Contains(item.StreamingServiceId)){   
+                        movie.Streams.Remove(item);
+                    }else{
+                        listIds.Add(item.StreamingServiceId);
+                    }
                 }
             }
             return View(movie);

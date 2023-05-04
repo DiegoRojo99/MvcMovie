@@ -9,18 +9,19 @@
 <div>
     <h4>MovieStreaming</h4>
     <hr />
+    @if(@Model!=null && @Model.StreamingService!=null && @Model.Movie!=null){
     <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Movie)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Movie.Title)
+            @Model.Movie.Title
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.StreamingService)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.StreamingService.Name)
+            @Model.StreamingService.Name
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CountryCode)
@@ -29,6 +30,7 @@
             @Html.DisplayFor(model => model.CountryCode)
         </dd>
     </dl>
+    }
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.MovieStreamingId">Edit</a> |

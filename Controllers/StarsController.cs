@@ -69,10 +69,8 @@ namespace McvMovie.Controllers
             var movie = await _context.Movie.FirstOrDefaultAsync(m => m.Id == star.MovieId);
             var actor = await _context.Actor.FirstOrDefaultAsync(a => a.Id == star.ActorId);
             if(movie != null && actor != null){
-                var actorName = actor.Name;
-                var movieName = movie.Title;
-                ViewData["movieName"]=movieName;
-                ViewData["actorName"]=actorName;
+                star.Actor=actor;
+                star.Movie=movie;
             }
 
             return View(star);

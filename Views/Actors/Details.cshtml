@@ -21,11 +21,13 @@
     <div class="row">
         @if(@Model.Stars != null){
                 @foreach(var item in @Model.Stars){
-                    <div class="col">
-                        <a href="http://localhost:5073/Movies/Details/@item.MovieId" class="list-item">
-                            <img class="movie-in-actor" src="@item.Movie.Poster" alt="@item.Movie.Title" />
-                        </a>
-                    </div>
+                    @if(@item!=null && @item.MovieId!=null && @item.Movie!=null){
+                        <div class="col">
+                            <a href="http://localhost:5073/Movies/Details/@item.MovieId" class="list-item">
+                                <img class="movie-in-actor" src="@item.Movie.Poster" alt="@item.Movie.Title" />
+                            </a>
+                        </div>
+                    }
                 }
             }
     </div>

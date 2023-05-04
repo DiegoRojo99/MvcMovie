@@ -22,6 +22,8 @@
 </form>
 <div class="row">   
     @foreach (var item in Model.Streams!) {
+        @if(@item!=null && @item.StreamingService!=null){
             <a class="streaming-logo-a" href="http://localhost:5073/StreamingServices/Details/@item.StreamingService.Id"><img class="streaming-logo" src="@item.StreamingService.LogoImage" alt="@item.StreamingService.Name"/></a>
+        }
     }
 </div>

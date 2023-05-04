@@ -7,46 +7,61 @@
 <h1>@Model.Title</h1>
 
 <div>
-    <div class="row movie-info">
-        <p>@Model.ReleaseDate.Year | @Model.Genre.Name | @Model.Rating.Name</p>
-    </div>
+    @if(@Model!=null && @Model.Genre!=null && @Model.Rating!=null){
+        <div class="row movie-info">
+            <p>@Model.ReleaseDate.Year | @Model.Genre.Name | @Model.Rating.Name</p>
+        </div>
+    }
     <dl class="row">
         <div class="col-6">
-            <img class="poster" src="@Url.Content(Model.Poster)" />
+            @if(@Model!=null && @Model.Poster!=null){                
+                <img class="poster" src="@Url.Content(Model.Poster)" />
+            }
         </div>
         <div class="col-4">
-        <p><span>Actors</span></p>
-        <div class="row">
-           @if(@Model.Stars != null){
-            @foreach(var item in @Model.Stars){
-                <div class="col">
-                    @if(@item.Actor!=null){
-                        <a href="http://localhost:5073/Actors/Details/@item.ActorId" class="list-item"><img class="actor-pic-movie" src="@item.Actor.Picture" /></a>
-                    }
-                </div>
-            }
-        } 
-        </div>
-        
-        <br/>
-        <p><span>Streaming Services</span></p>
-        @if(@Model.Streams != null){
-            @foreach(var item in @Model.Streams){
-                @if(@item.StreamingService!=null){
+            <p><span>Actors</span></p>
+            <div class="row">
+            @if(@Model!=null && @Model.Stars != null){
+                @foreach(var item in @Model.Stars){
                     <div class="col">
-                        <a href="http://localhost:5073/StreamingServices/Details/@item.StreamingServiceId" class="list-item"><img class="actor-pic-movie" src=@item.StreamingService.LogoImage /></a>
-                        <br />
+                        @if(@item.Actor!=null){
+                            <a href="http://localhost:5073/Actors/Details/@item.ActorId" class="list-item">
+                                <span title="@item.Actor.Name">
+                                    <img class="actor-pic-movie" src="@item.Actor.Picture" />
+                                </span>
+                            </a>
+                        }
                     </div>
                 }
+            } 
+            </div>
+            
+            <div class="row">
+            <p><span>Streaming Services</span></p>
+            @if(@Model!=null && @Model.Streams != null){
+                @foreach(var item in @Model.Streams){
+                    @if(@item.StreamingService!=null){
+                        <div class="col">
+                            <a href="http://localhost:5073/StreamingServices/Details/@item.StreamingServiceId" class="list-item">
+                                <span title="@item.StreamingService.Name">
+                                    <img class="actor-pic-movie" src=@item.StreamingService.LogoImage />
+                                </span>
+                            </a>
+                            <br />
+                        </div>
+                    }
+                }
             }
-        }
+            </div>
         </div>
     </dl>
     <dl class="row">
-        <p class="overview">@Model.Overview</p>
+        @if(@Model!=null && @Model.Overview!=null){
+            <p class="overview">@Model.Overview</p>
+        }
     </dl>    
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">See All Movies</a>
 </div>
