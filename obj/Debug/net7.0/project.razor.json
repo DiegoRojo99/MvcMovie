@@ -18645,6 +18645,11 @@
   "RootNamespace": "McvMovie",
   "Documents": [
     {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Directors\\Edit.cshtml",
+      "TargetPath": "Views\\Directors\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Genres\\Create.cshtml",
       "TargetPath": "Views\\Genres\\Create.cshtml",
       "FileKind": "mvc"
@@ -18750,6 +18755,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Directors\\Delete.cshtml",
+      "TargetPath": "Views\\Directors\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\MovieStreaming\\Create.cshtml",
       "TargetPath": "Views\\MovieStreaming\\Create.cshtml",
       "FileKind": "mvc"
@@ -18777,6 +18787,11 @@
     {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Actors\\Delete.cshtml",
       "TargetPath": "Views\\Actors\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Directors\\Create.cshtml",
+      "TargetPath": "Views\\Directors\\Create.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -18815,6 +18830,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Directors\\Index.cshtml",
+      "TargetPath": "Views\\Directors\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
@@ -18832,6 +18852,11 @@
     {
       "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\diego.rojo\\Documents\\projects\\MvcMovie\\Views\\Directors\\Details.cshtml",
+      "TargetPath": "Views\\Directors\\Details.cshtml",
       "FileKind": "mvc"
     },
     {

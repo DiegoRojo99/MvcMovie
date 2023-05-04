@@ -29,6 +29,7 @@ public static class SeedData
                     RatingId = Guid.Parse("55D72728-18C8-4ABE-BAA9-A60725774C76"),
                     GenreId = Guid.Parse("3850EB96-5E36-4A26-A3F7-B816E33E2B83"),
                     Poster = "https://www.themoviedb.org/t/p/w500/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg",
+                    DirectorId = Guid.Parse("338C2170-DC31-4CEF-9C7D-F0EE33F60392"),
                     Overview ="Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity."
 
                 },
@@ -64,10 +65,13 @@ public static class SeedData
                 new Movie
                 {
                     Id = Guid.Parse("A7E22211-263B-42B0-AC90-90421C4224E9"),
-                    Title = "Untitled Movie",
+                    Title = "Django Unchained",
                     ReleaseDate = DateTime.Parse("1959-4-15"),
                     RatingId = Guid.Parse("7C27B79E-8839-4C56-9489-466D7F43991C"),
-                    GenreId = Guid.Parse("3850EB96-5E36-4A26-A3F7-B816E33E2B83")
+                    GenreId = Guid.Parse("3850EB96-5E36-4A26-A3F7-B816E33E2B83"),
+                    Poster = "https://www.themoviedb.org/t/p/w500/7oWY8VDWW7thTzWh3OKYRkWUlD5.jpg",
+                    Overview = "With the help of a German bounty-hunter, a freed slave sets out to rescue his wife from a brutal plantation owner in Mississippi.",
+                    DirectorId = Guid.Parse("B11CDF3D-6A6F-4EB7-A322-046E4379FEF4")
                 },
                 new Movie
                 {
@@ -300,6 +304,27 @@ public static class SeedData
                     Description = "The movie is located at the Wild West era"
                 });
                    
+            }
+
+            if(context.Director.Any()){
+                return;
+            }
+            else{
+                context.Director.AddRange(
+                    new Director{
+                        Id = Guid.Parse("B11CDF3D-6A6F-4EB7-A322-046E4379FEF4"),
+                        Name = "Quentin Tarantino",
+                        Dob = DateTime.Parse("1963-3-27"),
+                        Picture = "https://www.themoviedb.org/t/p/w500/1gjcpAa99FAOWGnrUvHEXXsRs7o.jpg"
+                    },
+                    new Director{
+                        Id = Guid.Parse("338C2170-DC31-4CEF-9C7D-F0EE33F60392"),
+                        Name = "Josh Whedon",
+                        Dob = DateTime.Parse("1964-6-23"),
+                        Picture = "https://www.themoviedb.org/t/p/original/sZ3RzktbrooBpRHkoUCvQQrmgWu.jpg"
+                    }
+                );
+                
             }
             
             

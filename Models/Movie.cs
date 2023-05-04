@@ -28,4 +28,7 @@ public class Movie
     
     [StringLength(120)]
     public String? Overview { get; set; }
+
+    public Guid? DirectorId { get; set; }
+    public Director? Director { get; set; }
 }

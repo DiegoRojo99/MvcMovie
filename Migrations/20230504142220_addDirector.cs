@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace McvMovie.Migrations
 {
     /// <inheritdoc />
-    public partial class noWarning : Migration
+    public partial class addDirector : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,6 +23,21 @@ namespace McvMovie.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Actor", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Director",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
+                    Name = table.Column<string>(type: "TEXT", maxLength: 60, nullable: false),
+                    Dob = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    Nationality = table.Column<string>(type: "TEXT", nullable: true),
+                    Picture = table.Column<string>(type: "TEXT", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Director", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -74,11 +89,17 @@ namespace McvMovie.Migrations
                     RatingId = table.Column<Guid>(type: "TEXT", nullable: true),
                     GenreId = table.Column<Guid>(type: "TEXT", nullable: true),
                     Poster = table.Column<string>(type: "TEXT", nullable: true),
-                    Overview = table.Column<string>(type: "TEXT", maxLength: 120, nullable: true)
+                    Overview = table.Column<string>(type: "TEXT", maxLength: 120, nullable: true),
+                    DirectorId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Movie", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Movie_Director_DirectorId",
+                        column: x => x.DirectorId,
+                        principalTable: "Director",
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Movie_Genre_GenreId",
                         column: x => x.GenreId,
@@ -141,6 +162,11 @@ namespace McvMovie.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Movie_DirectorId",
+                table: "Movie",
+                column: "DirectorId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Movie_GenreId",
                 table: "Movie",
                 column: "GenreId");
@@ -188,6 +214,9 @@ namespace McvMovie.Migrations
 
             migrationBuilder.DropTable(
                 name: "Movie");
+
+            migrationBuilder.DropTable(
+                name: "Director");
 
             migrationBuilder.DropTable(
                 name: "Genre");

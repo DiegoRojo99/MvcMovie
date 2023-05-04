@@ -11,8 +11,8 @@ using MvcMovie.Data;
 namespace McvMovie.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    [Migration("20230504133823_noWarning")]
-    partial class noWarning
+    [Migration("20230504142220_addDirector")]
+    partial class addDirector
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -42,6 +42,31 @@ namespace McvMovie.Migrations
                     b.ToTable("Actor");
                 });
 
+            modelBuilder.Entity("MvcMovie.Models.Director", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("Dob")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(60)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Nationality")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Picture")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Director");
+                });
+
             modelBuilder.Entity("MvcMovie.Models.Genre", b =>
                 {
                     b.Property<Guid>("Id")
@@ -68,6 +93,9 @@ namespace McvMovie.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
+                    b.Property<Guid?>("DirectorId")
+                        .HasColumnType("TEXT");
+
                     b.Property<Guid?>("GenreId")
                         .HasColumnType("TEXT");
 
@@ -90,6 +118,8 @@ namespace McvMovie.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DirectorId");
 
                     b.HasIndex("GenreId");
 
@@ -184,6 +214,10 @@ namespace McvMovie.Migrations
 
             modelBuilder.Entity("MvcMovie.Models.Movie", b =>
                 {
+                    b.HasOne("MvcMovie.Models.Director", "Director")
+                        .WithMany("Movies")
+                        .HasForeignKey("DirectorId");
+
                     b.HasOne("MvcMovie.Models.Genre", "Genre")
                         .WithMany("Movies")
                         .HasForeignKey("GenreId");
@@ -191,6 +225,8 @@ namespace McvMovie.Migrations
                     b.HasOne("MvcMovie.Models.Rating", "Rating")
                         .WithMany("Movies")
                         .HasForeignKey("RatingId");
+
+                    b.Navigation("Director");
 
                     b.Navigation("Genre");
 
@@ -230,6 +266,11 @@ namespace McvMovie.Migrations
             modelBuilder.Entity("MvcMovie.Models.Actor", b =>
                 {
                     b.Navigation("Stars");
+                });
+
+            modelBuilder.Entity("MvcMovie.Models.Director", b =>
+                {
+                    b.Navigation("Movies");
                 });
 
             modelBuilder.Entity("MvcMovie.Models.Genre", b =>
