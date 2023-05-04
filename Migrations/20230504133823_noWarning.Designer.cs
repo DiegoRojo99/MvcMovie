@@ -11,8 +11,8 @@ using MvcMovie.Data;
 namespace McvMovie.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    [Migration("20230502152139_images")]
-    partial class images
+    [Migration("20230504133823_noWarning")]
+    partial class noWarning
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

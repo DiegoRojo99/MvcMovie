@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace McvMovie.Migrations
 {
     /// <inheritdoc />
-    public partial class images : Migration
+    public partial class noWarning : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
