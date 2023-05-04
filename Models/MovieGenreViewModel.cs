@@ -12,5 +12,7 @@ public class MovieGenreViewModel
     public Guid? MovieStream { get; set; }  
     public SelectList? Streamings { get; set; }
     public string? MovieRating { get; set; }
+    public SelectList? Directors { get; set; }
+    public string? DirectorString { get; set; }
     public string? SearchString { get; set; }
 }

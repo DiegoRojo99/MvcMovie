@@ -20,7 +20,7 @@ namespace McvMovie.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index(string movieGenre, string movieRating, string movieStream ,string searchString)
+        public async Task<IActionResult> Index(string movieGenre, string movieRating, string movieStream ,string searchString, string directorString)
         {
             if(_context.Movie == null){
                 return Problem("Entity set 'MvcMovieContext.Movie' is null.");
@@ -49,10 +49,15 @@ namespace McvMovie.Controllers
                 }
                 movies = movies.Where(m => movieIDs.Contains(m.Id));
             }
+            
+            if(!String.IsNullOrEmpty(directorString)){
+                movies = movies.Where(m => m.DirectorId.Equals(Guid.Parse(directorString)));
+            }
             var movieGenreVM = new MovieGenreViewModel{
                 Genres = new SelectList(_context.Genre,"Id","Name"),
                 Streamings = new SelectList(_context.StreamingService,"Id","Name"),
                 Ratings = new SelectList(_context.Rating,"Id","Name"),
+                Directors = new SelectList(_context.Director,"Id","Name"),
                 Movies = await movies.ToListAsync()
             };
             

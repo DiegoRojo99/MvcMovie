@@ -24,6 +24,10 @@
             <option value="">All Streaming Services</option>
         </select>
 
+        <select asp-for="DirectorString" asp-items="Model.Directors">
+            <option value="">All Directors</option>
+        </select>
+
 
         Title:  <input type="text" asp-for="SearchString" />
         <input type="submit" value="Filter" />
