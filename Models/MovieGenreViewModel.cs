@@ -15,4 +15,6 @@ public class MovieGenreViewModel
     public SelectList? Directors { get; set; }
     public string? DirectorString { get; set; }
     public string? SearchString { get; set; }
+    public int? Page { get; set; }
+    public int? TotalPages {get;set;}
 }

@@ -20,14 +20,12 @@ namespace McvMovie.Controllers
         }
 
         // GET: Movies
-        public async Task<IActionResult> Index(string movieGenre, string movieRating, string movieStream ,string searchString, string directorString)
+        public async Task<IActionResult> Index(string movieGenre, string movieRating, string movieStream ,string searchString, string directorString, int? page)
         {
             if(_context.Movie == null){
                 return Problem("Entity set 'MvcMovieContext.Movie' is null.");
             }
 
-            IQueryable<Guid?> genreQuery = from m in _context.Movie orderby m.GenreId select m.GenreId;
-            IQueryable<Guid?> ratingQuery = from m in _context.Movie orderby m.RatingId select m.RatingId;
             var movies = from m in _context.Movie select m;
             var streams = from ms in _context.MovieStreaming select ms;
 
@@ -53,12 +51,37 @@ namespace McvMovie.Controllers
             if(!String.IsNullOrEmpty(directorString)){
                 movies = movies.Where(m => m.DirectorId.Equals(Guid.Parse(directorString)));
             }
+
+            var totalPages=0;
+            var selectedMovies= new List<Guid>();
+            var totalItems=0;
+            var selectedItems=0;
+            foreach (var item in movies)
+            {
+                if( totalItems<(page*5) && totalItems>=((page-1)*5) && selectedItems<5){
+                    selectedMovies.Add(item.Id);
+                    selectedItems++;
+                }
+                totalItems++;
+            }
+            Console.WriteLine("Total Items: "+totalItems);
+            totalPages=totalItems/5;
+            if(totalItems%5!=0){
+                totalPages++;
+            }
+            Console.WriteLine("Total Pages: "+totalPages);
+
+            if(page!=null && page!=0){
+                movies= movies.Where(m => selectedMovies.Contains(m.Id));
+            }
+            
             var movieGenreVM = new MovieGenreViewModel{
                 Genres = new SelectList(_context.Genre,"Id","Name"),
                 Streamings = new SelectList(_context.StreamingService,"Id","Name"),
                 Ratings = new SelectList(_context.Rating,"Id","Name"),
                 Directors = new SelectList(_context.Director,"Id","Name"),
-                Movies = await movies.ToListAsync()
+                Movies = await movies.ToListAsync(),
+                TotalPages=totalPages
             };
             
             
