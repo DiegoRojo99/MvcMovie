@@ -19,6 +19,16 @@
             }
         </div>
         <div class="col-4">
+            <p><span>Director</span></p>
+            <div class="row">
+                @if(@Model!=null && @Model.Director!=null){
+                    <a href="http://localhost:5073/Directors/Details/@Model.Director.Id" class="list-item">
+                        <span title="@Model.Director.Name">
+                            <img class="actor-pic-movie" src="@Model.Director.Picture" />
+                        </span>
+                    </a>
+                }
+            </div>
             <p><span>Actors</span></p>
             <div class="row">
             @if(@Model!=null && @Model.Stars != null){

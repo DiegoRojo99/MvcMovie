@@ -121,6 +121,24 @@ public static class SeedData
                     Name = "Chris Pratt",
                     Dob = DateTime.Parse("1982-8-21"),
                     Picture = "https://www.themoviedb.org/t/p/original/83o3koL82jt30EJ0rz4Bnzrt2dd.jpg"
+                },
+                new Actor{
+                    Id = Guid.Parse("6B04261C-C74A-4FD4-9576-39930AF383B6"),
+                    Name = "Christoph Waltz",
+                    Dob = DateTime.Parse("1956-8-4"),
+                    Picture = "https://www.themoviedb.org/t/p/w500/2Hhztd4mUEV9Y25rfkXDwzL9QI9.jpg"
+                },
+                new Actor{
+                    Id = Guid.Parse("D329B031-D47A-46DD-BA66-2C7DE694735C"),
+                    Name = "Jamie Foxx",
+                    Dob = DateTime.Parse("1967-12-13"),
+                    Picture = "https://www.themoviedb.org/t/p/original/oZa2WXbsXRfJp7eI2oorREAaDrd.jpg"
+                },
+                new Actor{
+                    Id = Guid.Parse("AF077D9B-D47A-43F9-9E33-67F561F52482"),
+                    Name = "Leonardo Di Caprio",
+                    Dob = DateTime.Parse("1974-11-11"),
+                    Picture = "https://upload.wikimedia.org/wikipedia/commons/4/46/Leonardo_Dicaprio_Cannes_2019.jpg"
                 });
             
             }
@@ -153,6 +171,18 @@ public static class SeedData
                 new Star{
                     MovieId = Guid.Parse("F879043B-EBC7-4368-9DE6-5C9148901C7C"),
                     ActorId = Guid.Parse("7E8AEE99-ADC9-4614-90CC-5ACB4CA754D6")
+                },
+                new Star{
+                    MovieId = Guid.Parse("A7E22211-263B-42B0-AC90-90421C4224E9"),
+                    ActorId = Guid.Parse("D329B031-D47A-46DD-BA66-2C7DE694735C")
+                },
+                new Star{
+                    MovieId = Guid.Parse("A7E22211-263B-42B0-AC90-90421C4224E9"),
+                    ActorId = Guid.Parse("6B04261C-C74A-4FD4-9576-39930AF383B6")
+                },
+                new Star{
+                    MovieId = Guid.Parse("A7E22211-263B-42B0-AC90-90421C4224E9"),
+                    ActorId = Guid.Parse("AF077D9B-D47A-43F9-9E33-67F561F52482")
                 });
             
             }

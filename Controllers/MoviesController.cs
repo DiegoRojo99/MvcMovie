@@ -140,6 +140,13 @@ namespace McvMovie.Controllers
                     }
                 }
             }
+            
+            if(movie!=null && movie.DirectorId!=null){   
+                var director = await _context.Director
+                .FirstOrDefaultAsync(d => d.Id.Equals(movie.DirectorId));
+                movie.Director=director;
+            }
+
             return View(movie);
         }
 

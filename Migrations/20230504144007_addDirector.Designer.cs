@@ -11,7 +11,7 @@ using MvcMovie.Data;
 namespace McvMovie.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    [Migration("20230504142220_addDirector")]
+    [Migration("20230504144007_addDirector")]
     partial class addDirector
     {
         /// <inheritdoc />
